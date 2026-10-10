@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>حصان طروادة | REX Group — معالجة إعلان طريق السلطان</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coal:#17140F; --coal-2:#201C16; --coal-3:#2A251D;
+  --forest:#13281F; --forest-2:#1C3A2D;
+  --bronze:#A8703C; --gold:#D7B16B; --gold-soft:#BFA06A;
+  --ink:#EFE6D3; --mute:#ABA08A; --line:rgba(215,177,107,.22);
+  --lime:#C9E63B;
+  --display:"Reem Kufi","Noto Kufi Arabic","Segoe UI","Tahoma",sans-serif;
+  --body:"IBM Plex Sans Arabic","Noto Sans Arabic","Segoe UI","Tahoma",sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --coal:#17140F; --ink:#EFE6D3; }
+}
+:root[data-theme="dark"]{ --coal:#17140F; --ink:#EFE6D3; }
+html{ scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px); }
+*,*::before,*::after{ box-sizing:inherit; }
+body{
+  margin:0; background:var(--coal); color:var(--ink);
+  font-family:var(--body); font-size:17px; line-height:1.85;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+img,svg{ max-width:100%; }
+a{ color:var(--gold); }
+:focus-visible{ outline:2px solid var(--lime); outline-offset:3px; border-radius:4px; }
+
+/* ---------- top bar ---------- */
+.bar{
+  position:fixed; top:0; inset-inline:0; z-index:40;
+  padding-top:env(safe-area-inset-top,0px);
+  background:linear-gradient(180deg, rgba(23,20,15,.96), rgba(23,20,15,.82));
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.bar-in{ display:flex; align-items:center; gap:16px; height:58px; padding:0 clamp(14px,3vw,36px); }
+.mark{ font-family:var(--display); font-weight:700; font-size:20px; letter-spacing:.02em; direction:ltr; color:var(--ink); white-space:nowrap; }
+.mark b{ color:var(--lime); font-weight:700; }
+.bar-title{ flex:1; text-align:center; font-size:14px; color:var(--mute); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.bar-title strong{ color:var(--ink); font-weight:500; }
+.idx-btn{
+  display:flex; align-items:center; gap:8px; background:transparent; color:var(--ink);
+  border:1px solid var(--line); border-radius:999px; padding:7px 14px; font:inherit; font-size:14px; cursor:pointer;
+}
+.idx-btn:hover{ border-color:var(--gold); }
+.idx-btn span.ico{ display:inline-grid; gap:3px; }
+.idx-btn span.ico i{ display:block; width:14px; height:1.5px; background:currentColor; }
+.progress{ height:2px; background:rgba(255,255,255,.06); }
+.progress i{ display:block; height:100%; width:0; background:var(--lime); transition:width .5s ease; }
+
+/* ---------- index drawer ---------- */
+.drawer{
+  position:fixed; inset:0; z-index:60; display:none;
+  background:rgba(10,9,7,.72); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+}
+.drawer.open{ display:block; }
+.drawer-panel{
+  position:absolute; top:0; bottom:0; inset-inline-start:0; width:min(420px,92vw);
+  background:var(--coal-2); border-inline-end:1px solid var(--line);
+  padding:calc(env(safe-area-inset-top,0px) + 22px) 26px calc(env(safe-area-inset-bottom,0px) + 22px);
+  overflow-y:auto;
+}
+.drawer-head{ display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+.drawer-head h2{ font-family:var(--display); font-weight:500; font-size:22px; margin:0; color:var(--gold); }
+.x-btn{ background:none; border:1px solid var(--line); color:var(--ink); width:38px; height:38px; border-radius:50%; font-size:20px; cursor:pointer; line-height:1; }
+.toc{ list-style:none; margin:0; padding:0; counter-reset:t; }
+.toc li button{
+  width:100%; text-align:start; display:flex; gap:14px; align-items:baseline;
+  background:none; border:0; border-bottom:1px solid rgba(255,255,255,.06);
+  color:var(--ink); font:inherit; font-size:16px; padding:11px 2px; cursor:pointer;
+}
+.toc li button .n{ font-family:var(--display); color:var(--bronze); min-width:28px; font-size:15px; }
+.toc li button[aria-current="true"]{ color:var(--lime); }
+.toc li button[aria-current="true"] .n{ color:var(--lime); }
+.toc li button:hover{ color:var(--gold); }
+
+/* ---------- chapters ---------- */
+main{ padding-top:calc(env(safe-area-inset-top,0px) + 60px); padding-bottom:110px; min-height:100%; }
+.chapter{ display:none; }
+.chapter.on{ display:block; animation:enter .55s cubic-bezier(.2,.7,.2,1); }
+@keyframes enter{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:none; } }
+@media (prefers-reduced-motion: reduce){ .chapter.on{ animation:none; } .progress i{ transition:none; } }
+.wrap{ width:min(1180px, 100% - clamp(28px,6vw,96px)); margin-inline:auto; }
+.narrow{ max-width:760px; }
+
+.ch-head{ padding:clamp(40px,8vh,90px) 0 clamp(22px,4vh,40px); display:grid; grid-template-columns:auto 1fr; gap:6px clamp(18px,3vw,40px); align-items:end; border-bottom:1px solid var(--line); margin-bottom:clamp(28px,5vh,52px); }
+.ch-num{ font-family:var(--display); font-size:clamp(64px,11vw,140px); line-height:.8; color:transparent; -webkit-text-stroke:1px var(--bronze); grid-row:span 2; }
+.ch-head h2{ font-family:var(--display); font-weight:600; font-size:clamp(32px,5vw,58px); line-height:1.2; margin:0; color:var(--ink); }
+.ch-head p{ margin:0; color:var(--mute); font-size:clamp(15px,1.6vw,18px); max-width:62ch; }
+
+h3{ font-family:var(--display); font-weight:500; font-size:clamp(22px,2.6vw,30px); color:var(--gold); margin:44px 0 12px; line-height:1.35; }
+h4{ font-family:var(--display); font-weight:500; font-size:19px; color:var(--ink); margin:26px 0 6px; }
+p{ margin:0 0 14px; max-width:68ch; }
+.lead{ font-size:clamp(19px,2.1vw,24px); line-height:1.75; color:var(--ink); max-width:46ch; }
+.mute{ color:var(--mute); }
+.small{ font-size:14.5px; }
+ul.plain{ list-style:none; padding:0; margin:0 0 14px; }
+ul.plain li{ position:relative; padding-inline-start:20px; margin-bottom:8px; max-width:68ch; }
+ul.plain li::before{ content:""; position:absolute; inset-inline-start:2px; top:.8em; width:7px; height:1px; background:var(--bronze); }
+.ph{ color:var(--lime); font-weight:500; white-space:nowrap; }
+.note{
+  border-inline-start:2px solid var(--lime); background:rgba(201,230,59,.05);
+  padding:12px 18px; margin:20px 0; font-size:15px; color:var(--ink); max-width:72ch; border-radius:0 6px 6px 0;
+}
+.grid2{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr)); gap:clamp(20px,4vw,56px); }
+.grid3{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr)); gap:clamp(18px,3vw,40px); }
+.rule-top{ border-top:1px solid var(--line); padding-top:16px; }
+
+/* ---------- cover ---------- */
+.cover{ position:relative; min-height:calc(100svh - 60px); display:grid; align-items:end; overflow:hidden; margin-bottom:-110px; padding-bottom:130px; }
+.cover-art{ position:absolute; inset:0; }
+.cover-art svg{ width:100%; height:100%; display:block; }
+.cover-in{ position:relative; z-index:2; padding-bottom:clamp(20px,5vh,60px); }
+.cover-tag{ display:inline-block; font-size:14px; color:var(--coal); background:var(--lime); padding:3px 12px; border-radius:3px; margin-bottom:18px; }
+.cover h1{ font-family:var(--display); font-weight:700; font-size:clamp(64px,13vw,190px); line-height:1; margin:0 0 18px; color:var(--gold); letter-spacing:-.005em; text-shadow:0 6px 40px rgba(0,0,0,.6); }
+.cover .sub{ font-size:clamp(18px,2.2vw,26px); max-width:34ch; margin-bottom:28px; color:var(--ink); }
+.cover-meta{ display:flex; flex-wrap:wrap; gap:10px 36px; color:var(--mute); font-size:14.5px; border-top:1px solid var(--line); padding-top:16px; }
+.cover-meta strong{ color:var(--ink); font-weight:500; display:block; font-size:16px; }
+.cover-start{ margin-top:30px; display:inline-flex; align-items:center; gap:12px; background:var(--gold); color:var(--coal); border:0; font:inherit; font-weight:600; font-size:16px; padding:12px 26px; border-radius:999px; cursor:pointer; }
+.cover-start:hover{ background:var(--ink); }
+.slogan{ direction:ltr; font-family:var(--display); letter-spacing:.04em; color:var(--mute); font-size:13px; margin-top:22px; }
+
+/* ---------- logline block ---------- */
+.oneline{ font-family:var(--display); font-weight:500; font-size:clamp(26px,3.8vw,46px); line-height:1.45; color:var(--ink); max-width:24ch; margin:0 0 34px; }
+.logline{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:22px 0; margin:0 0 30px; display:grid; grid-template-columns:120px 1fr; gap:16px; }
+.logline .k{ color:var(--bronze); font-family:var(--display); font-size:18px; }
+.logline p{ margin:0; font-size:clamp(17px,1.9vw,21px); max-width:60ch; }
+
+/* ---------- timeline ---------- */
+.tl-bar{ display:flex; height:54px; border-radius:6px; overflow:hidden; margin:10px 0 8px; direction:rtl; }
+.tl-bar div{ display:flex; align-items:center; justify-content:center; font-size:13px; color:var(--coal); font-weight:600; border-inline-start:1px solid var(--coal); padding:0 4px; text-align:center; line-height:1.2; }
+.tl-scale{ display:flex; justify-content:space-between; font-size:12.5px; color:var(--mute); direction:ltr; }
+.scenes{ margin-top:34px; }
+.scene-row{ display:grid; grid-template-columns:150px 1fr; gap:6px 28px; padding:22px 0; border-top:1px solid var(--line); }
+.scene-row .tc{ font-family:var(--display); color:var(--gold); font-size:18px; direction:ltr; text-align:end; }
+.scene-row .tc small{ display:block; color:var(--mute); font-family:var(--body); font-size:13px; }
+.scene-row h4{ margin:0 0 6px; }
+.scene-row p{ margin:0; color:var(--ink); }
+
+/* ---------- script ---------- */
+.script{ max-width:760px; }
+.sc-head{ font-family:var(--display); color:var(--bronze); font-size:16px; margin:40px 0 6px; padding-top:14px; border-top:1px solid var(--line); }
+.sc-action{ color:var(--mute); font-size:15.5px; margin:8px 0 16px; max-width:64ch; }
+.line{ display:grid; grid-template-columns:112px 1fr; gap:4px 18px; margin:0 0 14px; }
+.line .who{ font-family:var(--display); color:var(--gold); font-size:16px; padding-top:3px; }
+.line .who small{ display:block; font-family:var(--body); color:var(--mute); font-size:12.5px; line-height:1.4; }
+.line .say{ font-size:19px; line-height:1.8; }
+.options{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr)); gap:14px; margin:18px 0; }
+.opt{ border:1px solid var(--line); border-radius:8px; padding:18px; }
+.opt .tag{ font-size:12.5px; color:var(--bronze); display:block; margin-bottom:6px; }
+.opt .t{ font-family:var(--display); font-size:22px; color:var(--ink); line-height:1.4; }
+
+/* ---------- storyboard ---------- */
+.sb-tools{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:0 0 26px; }
+.seg{ display:inline-flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; }
+.seg button{ background:none; border:0; color:var(--mute); font:inherit; font-size:14px; padding:8px 18px; cursor:pointer; }
+.seg button[aria-pressed="true"]{ background:var(--gold); color:var(--coal); font-weight:600; }
+.sb-scene{ margin:0 0 46px; }
+.sb-scene-h{ display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:16px; }
+.sb-scene-h h3{ margin:0; }
+.sb-scene-h span{ color:var(--mute); font-size:14px; direction:ltr; }
+.sb-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr)); gap:22px 18px; }
+.fr{ background:none; border:0; padding:0; text-align:start; color:var(--ink); font:inherit; cursor:pointer; display:block; width:100%; }
+.fr .pic{ position:relative; aspect-ratio:2.4/1; border-radius:4px; overflow:hidden; background:#000; outline:1px solid rgba(215,177,107,.18); }
+.fr .pic svg{ width:100%; height:100%; display:block; }
+.fr .no{ position:absolute; top:6px; inset-inline-start:6px; font-family:var(--display); font-size:13px; background:rgba(15,13,10,.78); color:var(--ink); padding:1px 8px; border-radius:3px; }
+.fr .shot{ position:absolute; bottom:6px; inset-inline-end:6px; font-size:11.5px; background:rgba(15,13,10,.78); color:var(--gold); padding:1px 8px; border-radius:3px; direction:ltr; }
+.fr .cap{ display:flex; justify-content:space-between; gap:10px; margin-top:8px; font-size:15px; line-height:1.5; }
+.fr .cap em{ font-style:normal; color:var(--mute); font-size:13px; direction:ltr; white-space:nowrap; }
+.fr:hover .pic{ outline-color:var(--gold); }
+.sb-list .fd{ display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:26px; padding:28px 0; border-top:1px solid var(--line); }
+@media (max-width:820px){ .sb-list .fd{ grid-template-columns:1fr; } }
+
+.fields{ display:grid; grid-template-columns:118px 1fr; gap:8px 16px; font-size:15.5px; line-height:1.7; margin:0; }
+.fields dt{ color:var(--bronze); font-family:var(--display); font-size:14.5px; padding-top:1px; }
+.fields dd{ margin:0; }
+.fd-title{ font-family:var(--display); font-size:22px; color:var(--ink); margin:0 0 4px; }
+.fd-meta{ color:var(--mute); font-size:14px; margin-bottom:14px; }
+.fd-meta span{ direction:ltr; display:inline-block; }
+.prompt{ margin-top:14px; border:1px dashed rgba(215,177,107,.35); border-radius:6px; padding:12px 14px; }
+.prompt summary{ cursor:pointer; color:var(--gold); font-size:14.5px; }
+.prompt p{ direction:ltr; text-align:left; font-family:ui-sans-serif,system-ui,sans-serif; font-size:13px; line-height:1.6; color:var(--mute); margin:10px 0 8px; max-width:none; }
+.copy{ background:none; border:1px solid var(--line); color:var(--ink); font:inherit; font-size:13px; padding:4px 12px; border-radius:999px; cursor:pointer; }
+
+/* frame dialog */
+dialog.fdlg{ width:min(1100px,96vw); max-height:92svh; padding:0; border:1px solid var(--line); border-radius:10px; background:var(--coal-2); color:var(--ink); }
+dialog.fdlg::backdrop{ background:rgba(8,7,5,.82); }
+.dlg-top{ position:sticky; top:0; z-index:2; display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 14px; background:var(--coal-2); border-bottom:1px solid var(--line); }
+.dlg-nav{ display:flex; gap:8px; }
+.dlg-nav button{ background:none; border:1px solid var(--line); color:var(--ink); font:inherit; font-size:14px; padding:6px 14px; border-radius:999px; cursor:pointer; }
+.dlg-body{ padding:18px; display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:24px; }
+@media (max-width:820px){ .dlg-body{ grid-template-columns:1fr; } }
+.dlg-pic{ aspect-ratio:2.4/1; border-radius:4px; overflow:hidden; outline:1px solid rgba(215,177,107,.2); }
+.dlg-pic svg{ width:100%; height:100%; display:block; }
+.dlg-cont{ margin-top:12px; font-size:14.5px; color:var(--mute); }
+
+/* ---------- art direction ---------- */
+.swatches{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:14px; margin:18px 0 8px; }
+.sw{ border-radius:6px; overflow:hidden; border:1px solid rgba(255,255,255,.07); }
+.sw i{ display:block; height:78px; }
+.sw div{ padding:8px 10px; font-size:13.5px; line-height:1.5; background:var(--coal-2); }
+.sw div b{ display:block; font-weight:500; color:var(--ink); }
+.sw div span{ color:var(--mute); direction:ltr; display:inline-block; }
+.ad-row{ display:grid; grid-template-columns:200px 1fr; gap:10px 34px; padding:20px 0; border-top:1px solid var(--line); }
+.ad-row h4{ margin:0; color:var(--gold); }
+.ad-row p, .ad-row ul{ margin:0; }
+@media (max-width:700px){ .ad-row, .scene-row, .logline{ grid-template-columns:1fr; } .scene-row .tc{ text-align:start; } }
+
+/* ---------- tables ---------- */
+.tbl-wrap{ overflow-x:auto; margin:10px 0 24px; }
+table{ border-collapse:collapse; width:100%; min-width:560px; font-size:15px; }
+th, td{ text-align:start; padding:11px 12px; border-bottom:1px solid rgba(255,255,255,.07); vertical-align:top; line-height:1.65; }
+th{ font-family:var(--display); font-weight:500; color:var(--bronze); font-size:14.5px; border-bottom:1px solid var(--line); }
+td:first-child{ color:var(--ink); font-weight:500; white-space:nowrap; }
+td{ color:var(--ink); }
+td .mute{ font-size:14px; }
+.dept{ font-family:var(--display); color:var(--gold); font-size:20px; margin:34px 0 4px; }
+
+/* ---------- cost ---------- */
+.cost{ padding:clamp(10px,3vh,30px) 0 clamp(30px,6vh,64px); border-bottom:1px solid var(--line); margin-bottom:34px; }
+.cost .from{ font-size:18px; color:var(--mute); }
+.cost .amt{ font-family:var(--display); font-weight:700; font-size:clamp(60px,12vw,150px); line-height:1.05; color:var(--gold); direction:ltr; text-align:right; }
+.cost .cur{ font-size:clamp(18px,2vw,24px); color:var(--ink); }
+.chips{ display:flex; flex-wrap:wrap; gap:10px; margin:12px 0 20px; }
+.chips span{ border:1px solid var(--line); border-radius:999px; padding:5px 14px; font-size:14.5px; }
+
+/* ---------- closing ---------- */
+.closing{ min-height:70svh; display:grid; align-content:center; text-align:center; justify-items:center; padding:40px 0; }
+.closing h2{ font-family:var(--display); font-weight:700; font-size:clamp(40px,7vw,96px); line-height:1.15; color:var(--gold); margin:0 0 20px; max-width:14ch; }
+.closing p{ margin-inline:auto; text-align:center; }
+.closing .mark{ font-size:34px; margin-top:34px; }
+.next-steps{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px 30px; margin:28px 0 0; padding:0; list-style:none; color:var(--mute); font-size:15px; counter-reset:s; }
+.next-steps li{ counter-increment:s; }
+.next-steps li::before{ content:counter(s) "  "; color:var(--lime); font-family:var(--display); }
+
+/* ---------- bottom nav ---------- */
+.nav{
+  position:fixed; bottom:0; inset-inline:0; z-index:40;
+  padding:10px clamp(12px,3vw,36px) calc(env(safe-area-inset-bottom,0px) + 10px);
+  display:flex; justify-content:space-between; align-items:center; gap:10px;
+  background:linear-gradient(0deg, rgba(23,20,15,.97), rgba(23,20,15,.8));
+  border-top:1px solid var(--line);
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+}
+.nav button{ min-height:46px; background:none; border:1px solid var(--line); color:var(--ink); font:inherit; font-size:15px; padding:0 18px; border-radius:999px; cursor:pointer; display:flex; align-items:center; gap:8px; max-width:42vw; }
+.nav button span.lbl{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.nav button.primary{ background:var(--gold); color:var(--coal); border-color:var(--gold); font-weight:600; }
+.nav button:disabled{ opacity:.3; cursor:default; }
+.nav .count{ font-family:var(--display); color:var(--mute); font-size:15px; }
+.nav .count b{ color:var(--ink); font-weight:500; }
+@media (max-width:560px){ .bar-title{ display:none; } .nav button .lbl{ display:none; } .nav button{ padding:0 16px; } }
+@media (max-width:560px){
+  .ch-head{ grid-template-columns:1fr; gap:4px; }
+  .ch-num{ grid-row:auto; font-size:54px; }
+  .line{ grid-template-columns:78px 1fr; gap:4px 12px; }
+  .line .say{ font-size:17.5px; }
+  .fields{ grid-template-columns:96px 1fr; }
+}
+.cover::after{ content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:linear-gradient(270deg, rgba(23,20,15,.88) 0%, rgba(23,20,15,.55) 45%, rgba(23,20,15,0) 75%),
+             linear-gradient(0deg, rgba(23,20,15,.9) 0%, rgba(23,20,15,0) 45%); }
+.cover .slogan{ text-align:right; }
+.svgdefs{ position:absolute; width:0; height:0; overflow:hidden; }
+</style>
+</head>
+<body>
+
+<svg class="svgdefs" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="blur1"><feGaussianBlur stdDeviation="1.2"/></filter>
+    <filter id="blur3"><feGaussianBlur stdDeviation="3"/></filter>
+    <filter id="glow"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="1.6" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .09 0"/></filter>
+    <radialGradient id="vig" cx="50%" cy="50%" r="70%"><stop offset="55%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#000" stop-opacity=".7"/></radialGradient>
+    <linearGradient id="gDawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1D2B28"/><stop offset=".55" stop-color="#6B5A45"/><stop offset=".82" stop-color="#D19A5E"/><stop offset="1" stop-color="#E8C08A"/></linearGradient>
+    <linearGradient id="gHall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1A140D"/><stop offset=".7" stop-color="#2C2115"/><stop offset="1" stop-color="#3A2B19"/></linearGradient>
+    <linearGradient id="gShaft" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2CF8E" stop-opacity=".34"/><stop offset="1" stop-color="#F2CF8E" stop-opacity="0"/></linearGradient>
+    <linearGradient id="gFloor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B2C1A"/><stop offset="1" stop-color="#16110B"/></linearGradient>
+    <linearGradient id="gDesert" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9A97C"/><stop offset=".6" stop-color="#EBD3A8"/><stop offset="1" stop-color="#F3E2C0"/></linearGradient>
+    <linearGradient id="gSand" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C39A64"/><stop offset="1" stop-color="#8C6A41"/></linearGradient>
+    <linearGradient id="gFlood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF4DA"/><stop offset="1" stop-color="#E9C88E"/></linearGradient>
+    <linearGradient id="gForest" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0F2019"/><stop offset="1" stop-color="#1F3D2F"/></linearGradient>
+    <linearGradient id="gParch" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D8C39A"/><stop offset="1" stop-color="#B89A68"/></linearGradient>
+    <radialGradient id="gScreen" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#2E5A45"/><stop offset="1" stop-color="#0E1E17"/></radialGradient>
+    <radialGradient id="gBokeh" cx="50%" cy="35%" r="75%"><stop offset="0" stop-color="#4A3720"/><stop offset="1" stop-color="#140F0A"/></radialGradient>
+    <radialGradient id="gLamp" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#FFF1CC"/><stop offset="1" stop-color="#FFF1CC" stop-opacity="0"/></radialGradient>
+  </defs>
+</svg>
+
+<header class="bar">
+  <div class="bar-in">
+    <div class="mark" aria-label="REX Group">REX <b>Group</b></div>
+    <div class="bar-title" id="barTitle"><strong>حصان طروادة</strong></div>
+    <button class="idx-btn" id="openIdx" aria-haspopup="dialog" aria-controls="drawer"><span class="ico" aria-hidden="true"><i></i><i></i><i></i></span>الفهرس</button>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+</header>
+
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="فهرس العرض">
+  <div class="drawer-panel">
+    <div class="drawer-head"><h2>فهرس العرض</h2><button class="x-btn" id="closeIdx" aria-label="إغلاق الفهرس">×</button></div>
+    <ol class="toc" id="toc"></ol>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- 0 COVER -->
+<section class="chapter" data-title="الغلاف" id="c0">
+  <div class="cover">
+    <div class="cover-art" aria-hidden="true">
+      <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+        <rect width="1600" height="900" fill="url(#gHall)"/>
+        <!-- outside world seen through the arch -->
+        <clipPath id="archClip"><path d="M560 900 V420 Q560 210 800 120 Q1040 210 1040 420 V900 Z"/></clipPath>
+        <g clip-path="url(#archClip)">
+          <rect width="1600" height="900" fill="url(#gDawn)"/>
+          <ellipse cx="800" cy="560" rx="420" ry="70" fill="#F3D39A" opacity=".55" filter="url(#blur3)"/>
+          <path d="M520 590 L560 560 600 575 640 540 680 560 720 520 760 550 800 500 840 552 880 525 920 560 960 535 1000 570 1060 590 Z" fill="#3B3226" opacity=".7"/>
+          <rect x="520" y="590" width="560" height="320" fill="#5A4631"/>
+          <path d="M790 590 L812 590 L1010 900 L590 900 Z" fill="#2B231A"/>
+          <path d="M800 600 L801 600 L806 900 L794 900 Z" fill="#D7B16B" opacity=".55"/>
+          <g fill="#FFF1CC" filter="url(#glow)">
+            <circle cx="792" cy="640" r="2.4"/><circle cx="808" cy="640" r="2.4"/>
+            <circle cx="770" cy="700" r="3.6"/><circle cx="792" cy="700" r="3.6"/>
+            <circle cx="816" cy="690" r="3"/><circle cx="836" cy="690" r="3"/>
+            <circle cx="740" cy="790" r="5"/><circle cx="772" cy="790" r="5"/>
+            <circle cx="834" cy="780" r="4.5"/><circle cx="864" cy="780" r="4.5"/>
+            <circle cx="700" cy="880" r="6"/><circle cx="740" cy="880" r="6"/>
+          </g>
+          <g fill="#C9E63B" opacity=".85"><circle cx="812" cy="745" r="2.2"/><circle cx="786" cy="830" r="2.6"/></g>
+        </g>
+        <!-- arch frame -->
+        <path d="M560 900 V420 Q560 210 800 120 Q1040 210 1040 420 V900" fill="none" stroke="#D7B16B" stroke-width="2" opacity=".55"/>
+        <path d="M530 900 V415 Q530 185 800 88 Q1070 185 1070 415 V900" fill="none" stroke="#A8703C" stroke-width="1" opacity=".45"/>
+        <g fill="#0F0C08">
+          <rect x="250" y="160" width="70" height="740"/><rect x="1280" y="160" width="70" height="740"/>
+          <rect x="238" y="140" width="94" height="24"/><rect x="1268" y="140" width="94" height="24"/>
+        </g>
+        <polygon points="560,250 760,900 560,900" fill="url(#gShaft)" opacity=".35"/>
+        <rect width="1600" height="900" fill="url(#vig)"/>
+        <rect width="1600" height="900" filter="url(#grain)"/>
+        <rect y="760" width="1600" height="140" fill="#17140F" opacity=".55"/>
+      </svg>
+    </div>
+    <div class="wrap cover-in">
+      <span class="cover-tag">اسم عمل مؤقت حتى اعتماد العميل</span>
+      <h1>حصان طروادة</h1>
+      <p class="sub">مملكة تستعد لغزو، وسلطان لا يهتزّ، لأن طريقه يسبق الجميع. فكرة إعلان تلفزيوني لـ «طريق السلطان».</p>
+      <div class="cover-meta">
+        <div><strong>REX Group</strong>تطوير وإنتاج</div>
+        <div><strong>إعلان تلفزيوني TVC</strong>مدة مستهدفة 60–90 ثانية</div>
+        <div><strong>صادق الشمري</strong>بدور السلطان</div>
+        <div><strong>معالجة إبداعية</strong>نسخة للنقاش والاعتماد</div>
+      </div>
+      <button class="cover-start" data-go="1">ابدأ العرض</button>
+      <div class="slogan">REX — Rules End. Xperiments Begin.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 1 IDEA -->
+<section class="chapter" data-title="الفكرة" id="c1">
+  <div class="wrap">
+    <div class="ch-head"><div class="ch-num">01</div><h2>الفكرة</h2><p>جملة واحدة، ثم الـlogline، ثم الفكرة كما ستُنفَّذ.</p></div>
+    <p class="oneline">سلطان يسمع بغزوٍ قادم، فيبتسم، لأن جيشه الحقيقي سيارات ودراجات تصل قبل أي عدو.</p>
+    <div class="logline"><div class="k">Logline</div><p>في مملكة متخيَّلة بفخامة الحكايات القديمة، يقتحم الحاجب مجلس السلطان بخبر غزوٍ تحضّره مملكة مجاورة بحيلة حصان خشبي عملاق. بينما يرتبك الحاجب ويحذّر الوزير، يكشف السلطان ورجاله، بهدوء وثقة، أن «طريق السلطان» يغطي المملكة كلها. وحين يسأل السلطان عن الجيش، تنفتح أبواب الشرفة على أسطول جاهز ينطلق ويسبق الغزاة قبل أن يقتربوا.</p></div>
+    <div class="grid2">
+      <div>
+        <h4>كيف تعمل الفكرة</h4>
+        <p>نأخذ من حكاية حصان طروادة فكرتها المعروفة فقط: عدو يخطط للدخول بحيلة بطيئة وثقيلة. ثم نقلبها. الحيلة القديمة تعتمد على الوقت والمفاجأة، و«طريق السلطان» يُلغي الاثنين، لأنه موجود ويتحرك قبل الجميع.</p>
+        <p>القصة كلها تُروى من داخل القصر، بحوار قصير بين السلطان والحاجب والوزير. الخدمات تظهر كجزء من خطة الدفاع، لا كقائمة مزايا. والذروة لقطة واحدة كبيرة: الجيش الذي ينتظره المشاهد بالسيوف والخيول يظهر سيارات ودراجات.</p>
+      </div>
+      <div>
+        <h4>لماذا تنجح</h4>
+        <ul class="plain">
+          <li>تتحول المفارقة بين العالم التاريخي والأسطول الحديث إلى لحظة كشف لا تُنسى، لا إلى خلطة غريبة.</li>
+          <li>اسم «طريق السلطان» نفسه يقدّم الحكاية: السلطان شخصية العلامة، والطريق هو السلاح.</li>
+          <li>صادق الشمري في دور السلطان يعطي الهيبة والكوميديا الخفيفة معاً من دون مبالغة.</li>
+          <li>البنية قابلة للقصّ: نسخة كاملة، ونسخ قصيرة تبقى مفهومة لأن الكشف في النهاية بصري.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">«حصان طروادة» اسم عمل داخلي. يمكن أن يتغيّر العنوان النهائي أو يُستغنى عنه بالكامل في المادة الموجهة للجمهور.</div>
+  </div>
+</section>
+
+<!-- 2 OBJECTIVE -->
+<section class="chapter" data-title="الهدف والرسالة" id="c2">
+  <div class="wrap">
+    <div class="ch-head"><div class="ch-num">02</div><h2>الهدف الإعلاني والرسالة</h2><p>ما يجب أن يخرج به المشاهد، وكيف تحمل الحكاية العلامة.</p></div>
+    <p class="lead">الرسالة الأساسية: مع «طريق السلطان» أنت أسبق من غيرك، والطريق إلك.</p>
+    <div class="grid3" style="margin-top:34px">
+      <div class="rule-top"><h4 style="margin-top:0">ما يجب أن يفهمه الجمهور</h4><ul class="plain"><li>«طريق السلطان» علامة كبيرة وواثقة، لها أسطول حقيقي من السيارات والدراجات.</li><li>التطبيق هو مدخلك لخدماتها، ويظهر كأداة يستخدمها السلطان نفسه.</li><li>السرعة والجاهزية هما الإحساس المرافق للعلامة.</li></ul></div>
+      <div class="rule-top"><h4 style="margin-top:0">ما يجب أن يتذكّره</h4><ul class="plain"><li>لقطة الأسطول أمام القصر.</li><li>سطر السلطان الأخير.</li><li>اسم العلامة وشكل التطبيق في الختام.</li></ul></div>
+      <div class="rule-top"><h4 style="margin-top:0">ما يجب أن يفعله</h4><ul class="plain"><li>يحمّل التطبيق أو يجرّب <span class="ph">[الخدمة الأساسية]</span>.</li><li>يربط الاسم بإحساس «السبق».</li><li>يشارك الإعلان لأنه ممتع، لا لأنه إعلان.</li></ul></div>
+    </div>
+    <h3>كيف تخدم الحكاية العلامة</h3>
+    <div class="ad-row"><h4>الاسم يصبح عالماً</h4><p>«طريق السلطان» يتحول من اسم تجاري إلى سلطان حقيقي وطريق حقيقي. لا نحتاج أن نشرح الاسم؛ نعيشه.</p></div>
+    <div class="ad-row"><h4>الخدمة جزء من الخطة</h4><p>كل خدمة تُذكر في الحوار تأتي ردّاً على قلق: الوزير يحذّر، فيرد السلطان بما يملكه. هكذا يسمع المشاهد الخدمات كحلول، لا كإعلان مباشر.</p></div>
+    <div class="ad-row"><h4>الأسطول هو الدليل</h4><p>الكشف الختامي يحوّل الكلام إلى صورة: الجيش موجود، جاهز، ويتحرك. هذا ما يجعل الرسالة قابلة للتصديق.</p></div>
+    <div class="ad-row"><h4>المنافسة بلا تسمية</h4><p>المملكة المعادية رمز لأي «بطء» أو «تأخير». لا نشير إلى أي منافس أو جهة حقيقية.</p></div>
+    <div class="note">تفاصيل الخدمات الفعلية للتطبيق غير موضحة في المواد الحالية. كل ما يظهر بين قوسين مثل <span class="ph">[اسم الخدمة]</span> و<span class="ph">[ميزة التطبيق]</span> يحتاج تأكيداً من العميل قبل اعتماد النسخة النهائية.</div>
+  </div>
+</section>
+
+<!-- 3 TREATMENT -->
+<section class="chapter" data-title="المعالجة الإبداعية" id="c3">
+  <div class="wrap">
+    <div class="ch-head"><div class="ch-num">03</div><h2>المعالجة الإبداعية</h2><p>العالم، النبرة، الشخصيات، والتحول من القصر إلى الطريق.</p></div>
+    <div class="narrow">
+      <h3 style="margin-top:0">العالم</h3>
+      <p>مملكة متخيَّلة لا تنتمي إلى بلد أو عصر محدد. قصر من حجر رملي دافئ، أقواس عالية، أعمدة ثقيلة، أقمشة خضراء داكنة ونحاس مطروق. عالم مهيب وأصيل، لكنه ليس درساً في التاريخ. نصنعه من عناصر مألوفة للعين العراقية والعربية، من دون أن نقلّد مملكة حقيقية أو نسيء لأي شعب.</p>
+      <p>داخل هذا العالم، الحداثة موجودة بهدوء: هاتف في غلاف نحاسي محفور، خريطة تتحول إلى شاشة، وأسطول ينتظر خارج الأسوار. نعامل هذه العناصر كأنها جزء طبيعي من المملكة، فلا يضحك أحد عليها داخل القصة، والمشاهد وحده يستمتع بالمفارقة.</p>
+      <h3>النبرة</h3>
+      <p>ملحمية في الصورة، خفيفة في الأداء. الكاميرا والإضاءة والموسيقى تتعامل مع القصة بجدية فيلم تاريخي كبير، بينما تأتي الكوميديا من ردود الأفعال الصغيرة: لهاث الحاجب، حاجب السلطان المرفوع، نظرة متبادلة بين الوزير والحاجب. لا تهريج، ولا نكات مباشرة.</p>
+      <h3>الشخصيات</h3>
+      <ul class="plain">
+        <li><b>السلطان (صادق الشمري):</b> هادئ لدرجة تستفز من حوله. قليل الكلام، وكل جملة منه قرار. ثقته هي ثقة العلامة.</li>
+        <li><b>الحاجب:</b> صوت القلق. يركض، يلهث، يبالغ قليلاً. هو بوابة المشاهد إلى التوتر، ومصدر الضحكة الخفيفة.</li>
+        <li><b>الوزير:</b> العقل البارد. يحذّر من الحيلة، ثم يعرض أدوات المملكة. هو من يقدّم الخدمات بطريقة طبيعية.</li>
+        <li><b>الأسطول:</b> شخصية جماعية بلا وجوه تقريباً: سائقون ودرّاجون بزي موحّد، يتحركون كوحدة واحدة.</li>
+        <li><b>المملكة المعادية:</b> حاضرة من بعيد فقط: رسالة، رسم حصان، ثم موكب بطيء يجرّ حصاناً خشبياً في الصحراء.</li>
+      </ul>
+      <h3>تصاعد التوتر</h3>
+      <p>نبدأ بسكون كامل: مملكة عند الفجر وسلطان شبه نائم على عرشه. تكسر خطوات الحاجب هذا السكون، ثم الخبر، ثم رسم الحصان الخشبي على الرسالة. الوزير يرفع مستوى الخطر بجملة «حيلة قديمة». هنا يبدأ الانعكاس: كلما زاد قلق الآخرين، زاد هدوء السلطان. الحوار يتحول من تحذير إلى استعراض لما تملكه المملكة، والموسيقى تتسلل من الطبول الخافتة إلى إيقاع واضح.</p>
+      <h3>التحول من القصر إلى الطريق</h3>
+      <p>نصمم الانتقال على ثلاث درجات حتى لا يبدو الكشف قفزة. الأولى: الخريطة الورقية على الطاولة تتحول بقطع مطابق إلى خريطة التطبيق على الهاتف، فيدخل الحديث إلى القصر من دون أن يكسر عالمه. الثانية: السلطان ينهض ويسأل «والجيش؟»، فيمشي نحو أبواب الشرفة والضوء يتسرب من الشقوق. الثالثة: الأبواب تنفتح والكاميرا تخرج من القصر إلى لقطة جوية واسعة تكشف الأسطول مصفوفاً أمام البوابة. من الظل الدافئ إلى ضوء النهار الواسع.</p>
+      <h3>الذروة والنهاية</h3>
+      <p>الذروة هي لحظة الكشف نفسها، ثم سطر السلطان الهادئ «خلّوهم يجون... إذا لحگوا». ينطلق الأسطول، وننتقل إلى الصحراء حيث يجرّ جنود المملكة المعادية حصانهم الخشبي ببطء شديد. السيارات والدراجات تمر بجانبهم كوميض، ويلتفت قائدهم والغبار على وجهه. اللقطة الأخيرة: الأسطول يصل إلى الأفق أولاً والحصان متأخر في المقدمة. ثم شاشة الختام بالشعار والتطبيق.</p>
+      <h3>مزج التاريخ بالواقع الحديث</h3>
+      <ul class="plain">
+        <li>نعطي العناصر الحديثة «مكانة» داخل العالم: الهاتف محمول بغلاف ملكي، السائقون يقفون كحرس، والسيارات مصفوفة كتشكيل عسكري.</li>
+        <li>نوحّد اللوحة اللونية بين العالمين: نحاس وأخضر داكن وذهبي دافئ يظهر على الأقمشة وعلى تفاصيل الأسطول ومنصة التطبيق.</li>
+        <li>لا نغيّر أسلوب التصوير عند ظهور الأسطول: نفس العدسات والحركة البطيئة المهيبة، فيبدو جزءاً من الملحمة لا إعلاناً ملصقاً بها.</li>
+        <li>نترك المفارقة للمشاهد: لا أحد في القصة يتعجب من وجود هاتف أو سيارة.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 4 SCENES -->
+<section class="chapter" data-title="القصة والمشاهد" id="c4">
+  <div class="wrap">
+    <div class="ch-head"><div class="ch-num">04</div><h2>ملخص القصة والمشاهد</h2><p>سبعة مشاهد بمدة مستهدفة نحو 82 ثانية، قابلة للضبط بعد اعتماد العميل.</p></div>
+    <div class="tl-bar" role="img" aria-label="توزيع زمن المشاهد على 82 ثانية">
+      <div style="flex:8;background:#7C6A50">المملكة</div>
+      <div style="flex:12;background:#A8703C">الخبر</div>
+      <div style="flex:22;background:#D7B16B">المجلس</div>
+      <div style="flex:10;background:#BFA06A">السؤال</div>
+      <div style="flex:14;background:#C9E63B">الكشف</div>
+      <div style="flex:10;background:#8E9F66">السبق</div>
+      <div style="flex:6;background:#5E7A62">الختام</div>
+    </div>
+    <div class="tl-scale"><span>0:00</span><span>0:20</span><span>0:40</span><span>1:00</span><span>1:22</span></div>
+    <div class="scenes">
+      <div class="scene-row"><div class="tc">0:00–0:08<small>8 ث · كادرات 1–4</small></div><div><h4>1. المملكة</h4><p>فجر فوق مملكة متخيَّلة. ندخل القصر عبر قاعة العرش الواسعة، ونجد السلطان جالساً بهدوء شبه نائم، يدُه على مسند العرش. خطوات بعيدة تقترب.</p></div></div>
+      <div class="scene-row"><div class="tc">0:08–0:20<small>12 ث · كادرات 5–9</small></div><div><h4>2. الخبر</h4><p>الحاجب يركض في الممر ويدخل لاهثاً. يخبر السلطان أن مملكة مجاورة ناوية تغزوهم، ويفرد رسالة عليها رسم حصان خشبي عملاق.</p></div></div>
+      <div class="scene-row"><div class="tc">0:20–0:42<small>22 ث · كادرات 10–18</small></div><div><h4>3. المجلس</h4><p>الوزير يخرج من الظل ويحذّر من الحيلة. السلطان يبتسم. الوزير يفرد خريطة المملكة، وتتحول بقطع مطابق إلى خريطة التطبيق على هاتف السلطان. عبر الحوار تظهر <span class="ph">[الخدمة الأولى]</span> و<span class="ph">[ميزة التطبيق]</span> و<span class="ph">[الخدمة الثانية]</span>.</p></div></div>
+      <div class="scene-row"><div class="tc">0:42–0:52<small>10 ث · كادرات 19–21</small></div><div><h4>4. السؤال</h4><p>السلطان ينهض: «والجيش؟». نظرة متبادلة بين الحاجب والوزير، ثم «جاهز يا مولاي». السلطان يمشي نحو أبواب الشرفة والحرس يفتحونها.</p></div></div>
+      <div class="scene-row"><div class="tc">0:52–1:06<small>14 ث · كادرات 22–26</small></div><div><h4>5. الكشف</h4><p>لقطة جوية تكشف أسطول السيارات والدراجات مصفوفاً أمام البوابة. تفاصيل تشغيل المحركات، عجلات تتحرك، ثم سطر السلطان الأخير.</p></div></div>
+      <div class="scene-row"><div class="tc">1:06–1:16<small>10 ث · كادرات 27–29</small></div><div><h4>6. السبق</h4><p>في الصحراء، جنود المملكة المعادية يجرّون الحصان الخشبي ببطء. الأسطول يمر بجانبهم ويسبقهم إلى الأفق.</p></div></div>
+      <div class="scene-row"><div class="tc">1:16–1:22<small>6 ث · كادر 30</small></div><div><h4>7. الختام</h4><p>شعار «طريق السلطان»، الشعار الإعلاني المعتمد، وعناصر تحميل التطبيق.</p></div></div>
+    </div>
+    <div class="note">للنسخة 60 ثانية: نختصر المشهد الأول إلى لقطتين، ونحذف كادر الحاجب المندهش (17) وكادر الدواسة (24)، ونقلّص المجلس إلى خدمتين. للنسخة 30 ثانية: الخبر، سطر «والجيش؟»، الكشف، والختام.</div>
+  </div>
+</section>
+
+<!-- 5 SCRIPT -->
+<section class="chapter" data-title="النص والحوار" id="c5">
+  <div class="wrap">
+    <div class="ch-head"><div class="ch-num">05</div><h2>النص الدرامي والحوار المقترح</h2><p>حوار عراقي قصير وطبيعي. الأقواس الخضراء تُملأ بعد تأكيد العميل.</p></div>
+    <div class="script">
+      <div class="sc-head">مشهد 1 — المملكة. خارجي ثم داخلي، فجر.</div>
+      <p class="sc-action">فجر فوق المملكة. قاعة العرش ساكنة. السلطان على عرشه، عيناه نصف مغمضتين، أصابعه تنقر مسند العرش. خطوات سريعة تقترب من بعيد.</p>
+
+      <div class="sc-head">مشهد 2 — الخبر. داخلي، الممر وقاعة العرش.</div>
+      <p class="sc-action">الحاجب يركض في الممر الطويل، الستائر تتطاير. يتوقف أمام العرش وينحني لاهثاً.</p>
+      <div class="line"><div class="who">الحاجب<small>لاهث</small></div><div class="say">مولاي! مولاي!</div></div>
+      <div class="line"><div class="who">السلطان<small>بلا حركة</small></div><div class="say">خير إن شاء الله... منو لاحگك؟</div></div>
+      <div class="line"><div class="who">الحاجب</div><div class="say">مملكة <span class="ph">[اسم المملكة المجاورة]</span> ناوية تغزونا يا مولاي!</div></div>
+      <div class="line"><div class="who">السلطان</div><div class="say">...وشلون عرفت؟</div></div>
+      <div class="line"><div class="who">الحاجب<small>يفرد الرسالة</small></div><div class="say">عيوننا شافوهم... يبنون حصان خشب، بطول السور!</div></div>
+
+      <div class="sc-head">مشهد 3 — المجلس. داخلي، قاعة العرش.</div>
+      <p class="sc-action">الوزير يتقدم من بين الأعمدة.</p>
+      <div class="line"><div class="who">الوزير</div><div class="say">حيلة قديمة يا مولاي. يدخلون بيه علينا... وإحنا غافلين.</div></div>
+      <div class="line"><div class="who">السلطان<small>ابتسامة خفيفة</small></div><div class="say">وإحنا شوكت غفلنا؟ ... گول يا وزير، شعدنا؟</div></div>
+      <p class="sc-action">الوزير يفرد خريطة المملكة على الطاولة. خطوط الطرق تلمع وتتحول إلى خريطة التطبيق على هاتف السلطان.</p>
+      <div class="line"><div class="who">الوزير</div><div class="say">المملكة كلها بإيدك يا مولاي. <span class="ph">[الخدمة الأولى]</span> توصل لكل زاوية بيها.</div></div>
+      <div class="line"><div class="who">السلطان<small>يقلّب الهاتف</small></div><div class="say">وهاي؟</div></div>
+      <div class="line"><div class="who">الوزير</div><div class="say"><span class="ph">[ميزة التطبيق]</span>... من هنا، وبنفس اللحظة.</div></div>
+      <div class="line"><div class="who">الحاجب<small>يتمتم مندهشاً</small></div><div class="say">و<span class="ph">[الخدمة الثانية]</span> هم؟ يعني حتى الحاجب ما يحتاج يركض بعد!</div></div>
+      <p class="sc-action">السلطان يرمقه بنظرة. الحاجب يعدّل وقفته فوراً.</p>
+
+      <div class="sc-head">مشهد 4 — السؤال. داخلي، قاعة العرش.</div>
+      <div class="line"><div class="who">السلطان<small>ينهض</small></div><div class="say">زين... والجيش؟</div></div>
+      <p class="sc-action">الحاجب والوزير يتبادلان نظرة، وابتسامة صغيرة.</p>
+      <div class="line"><div class="who">الحاجب</div><div class="say">الجيش... جاهز يا مولاي.</div></div>
+      <p class="sc-action">السلطان يمشي نحو أبواب الشرفة. الحرس يدفعون الأبواب، والضوء يغمر القاعة.</p>
+
+      <div class="sc-head">مشهد 5 — الكشف. خارجي، أمام القصر، نهار.</div>
+      <p class="sc-action">الأسطول مصفوف أمام البوابة. أصوات المحركات تشتغل بالتتابع.</p>
+      <div class="line"><div class="who">السلطان<small>بهدوء تام</small></div><div class="say">خلّوهم يجون... إذا لحگوا.</div></div>
+
+      <div class="sc-head">مشهد 6 — السبق. خارجي، طريق صحراوي، نهار.</div>
+      <p class="sc-action">جنود المملكة المعادية يجرّون الحصان الخشبي ببطء. الأسطول يمر بجانبهم ويختفي باتجاه الأفق. قائدهم يلتفت والغبار على وجهه. بلا حوار؛ موسيقى ومؤثرات.</p>
+
+      <div class="sc-head">مشهد 7 — الختام.</div>
+      <div class="line"><div class="who">تعليق صوتي<small>اختياري، بصوت السلطان</small></div><div class="say"><span class="ph">[سطر ختامي يُعتمد]</span> — مثلاً: «الطريق طويل... بس مو علينا.»</div></div>
+
+      <h3>نهايات بديلة</h3>
+      <ul class="plain">
+        <li><b>النهاية أ (المقترحة):</b> الأسطول يسبق الحصان إلى الأفق، كما في الستوري بورد.</li>
+        <li><b>النهاية ب:</b> يصل جنود المملكة المعادية أخيراً إلى بوابة المملكة، فيجدون أحد درّاجي الأسطول بانتظارهم بابتسامة، كأنه وصل قبلهم بكثير. أطرف، وتحتاج يوم تصوير إضافياً أو موقعاً للبوابة.</li>
+      </ul>
+
+      <h3>خيارات الشعار الختامي</h3>
+      <p class="mute small">مقترحات للنقاش فقط. إذا كان لدى «طريق السلطان» شعار رسمي، يحلّ محلها.</p>
+      <div class="options">
+        <div class="opt"><span class="tag">خيار 1</span><div class="t">قبل لا يوصلون... وصلنا.</div></div>
+        <div class="opt"><span class="tag">خيار 2</span><div class="t">الطريق إلنا.</div></div>
+        <div class="opt"><span class="tag">خيار 3</span><div class="t">طريق السلطان... يسبق.</div></div>
+        <div class="opt"><span class="tag">خيار 4</span><div class="t">جيشك جاهز.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 STORYBOARD -->
+<section class="chapter" data-title="الستوري بورد" id="c6">
+  <div class="wrap">
+    <div class="ch-head"><div class="ch-num">06</div><h2>الستوري بورد</h2><p>30 كادراً متتابعاً من الفجر إلى شاشة الختام. اضغط أي كادر لعرض تفاصيله الكاملة.</p></div>
+    <div class="sb-tools">
+      <div class="seg" role="group" aria-label="طريقة العرض">
+        <button id="vGrid" aria-pressed="true">شبكة الكادرات</button>
+        <button id="vList" aria-pressed="false">التفاصيل الكاملة</button>
+      </div>
+      <span class="mute small">الرسوم لوحات تخطيط أولية (pre-viz) للتكوين والحركة. لكل كادر وصف توليد بالإنجليزية لإنتاج الصور النهائية لاحقاً.</span>
+    </div>
+    <div id="sbGrid"></div>
+    <div id="sbList" class="sb-list" hidden></div>
+  </div>
+</section>
+
+<dialog class="fdlg" id="fdlg" aria-label="تفاصيل الكادر">
+  <div class="dlg-top">
+    <div class="dlg-nav"><button id="dPrev">السابق</button><button id="dNext">التالي</button></div>
+    <button class="x-btn" id="dClose" aria-label="إغلاق">×</button>
+  </div>
+  <div class="dlg-body" id="dBody"></div>
+</dialog>
+
+<!-- 7 ART DIRECTION -->
+<section class="chapter" data-title="الآرت دايركشن" id="c7">
+  <div class="wrap">
+    <div class="ch-head"><div class="ch-num">07</div><h2>الآرت دايركشن</h2><p>عالم أصيل ومتخيَّل، ينتمي إليه الأسطول الحديث بلا تنافر.</p></div>
+    <h3 style="margin-top:0">لوحة الألوان والخامات</h3>
+    <div class="swatches">
+      <div class="sw"><i style="background:#C9A372"></i><div><b>حجر رملي</b>جدران القصر <span>#C9A372</span></div></div>
+      <div class="sw"><i style="background:#1C3A2D"></i><div><b>أخضر ملكي داكن</b>أقمشة، أعلام <span>#1C3A2D</span></div></div>
+      <div class="sw"><i style="background:#A8703C"></i><div><b>نحاس مطروق</b>إكسسوارات، غلاف الهاتف <span>#A8703C</span></div></div>
+      <div class="sw"><i style="background:#D7B16B"></i><div><b>ذهب دافئ</b>تطريز، إضاءة <span>#D7B16B</span></div></div>
+      <div class="sw"><i style="background:#201C16"></i><div><b>فحمي</b>ظلال، خشب قديم <span>#201C16</span></div></div>
+      <div class="sw"><i style="background:#EFE6D3"></i><div><b>عاجي</b>ثوب السلطان <span>#EFE6D3</span></div></div>
+      <div class="sw"><i style="background:#6B4A2A"></i><div><b>خشب الحصان</b>المملكة المعادية <span>#6B4A2A</span></div></div>
+      <div class="sw"><i style="background:repeating-linear-gradient(135deg,#2a2a2a 0 8px,#3a3a3a 8px 16px)"></i><div><b>هوية الأسطول</b>حسب ألوان العلامة <span class="ph">[تأكيد]</span></div></div>
+    </div>
+    <p class="mute small">الأخضر الليموني يبقى لون REX في هذا العرض فقط، ولا يدخل عالم الإعلان إلا إذا كان جزءاً من هوية «طريق السلطان».</p>
+
+    <h3>عناصر العالم</h3>
+    <div class="ad-row"><h4>القصر والمملكة</h4><ul class="plain"><li>قاعة عرش متناظرة: صفّان من الأعمدة، أقواس مدببة، نوافذ عالية تسمح بأعمدة ضوء.</li><li>ممر طويل بستائر قماشية ثقيلة، مناسب لركضة الحاجب.</li><li>شرفة كبيرة بأبواب خشبية مزدوجة تطل على ساحة وبوابة، وهي نقطة الكشف.</li><li>المملكة من الخارج: قباب وأسوار ومآذن متخيلة بخط أفق واحد يُستخدم في الافتتاح والختام.</li></ul></div>
+    <div class="ad-row"><h4>العمارة والديكور</h4><p>نستلهم من العمارة الإسلامية والرافدينية بشكل عام: الطابوق والجص والمقرنصات والزخارف الهندسية، من دون نسخ معلم معروف. سطوح غير لامعة، آثار زمن خفيفة على الحجر، وسجاد بألوان مطفأة. العرش من خشب داكن بتطعيم نحاسي وظهر مقوّس عالٍ.</p></div>
+    <div class="ad-row"><h4>الخرائط</h4><p>خريطة المملكة مرسومة يدوياً على رقّ قديم بحبر بني، وطرقها بخط ذهبي. تُصمم بحيث يتطابق شكل الطرق مع خريطة التطبيق في لقطة الانتقال، فيبدو القطع كأن الخريطة نفسها «استيقظت». لا كتابات عربية مولدة على الخريطة؛ تضاف أي كتابة لاحقاً كتصميم.</p></div>
+    <div class="ad-row"><h4>الأقمشة والأزياء</h4><ul class="plain"><li><b>السلطان:</b> طبقات عاجية وخضراء داكنة، تطريز نحاسي، عمامة عالية بحجر واحد. فخامة هادئة لا بهرجة.</li><li><b>الحاجب:</b> ثوب رملي قصير نسبياً، عمامة صغيرة، عصا بطرف نحاسي. يسمح بالحركة والركض.</li><li><b>الوزير:</b> ثوب فحمي مخضر، قلنسوة عالية، خريطة مطوية على الحزام.</li><li><b>الحرس:</b> ملابس موحدة بلون الحجر مع رماح ودروع خفيفة الوزن.</li><li><b>جنود المملكة المعادية:</b> لون مختلف تماماً (بني ترابي وأحمر باهت) حتى يقرأهم المشاهد فوراً.</li></ul></div>
+    <div class="ad-row"><h4>الإكسسوارات والأعلام</h4><p>رسالة مختومة بالشمع، رسم الحصان الخشبي، طاولة خرائط، أوانٍ نحاسية، عناقيد عنب على صينية قرب العرش. أعلام المملكة خضراء داكنة برمز هندسي مبتكر. يمكن أن يحمل الرمز إشارة خفية إلى هوية «طريق السلطان» إن وافق العميل، من دون وضع الشعار التجاري على أعلام تاريخية.</p></div>
+    <div class="ad-row"><h4>الهاتف والتطبيق</h4><p>هاتف حديث داخل غلاف نحاسي وجلدي محفور، يُحمل كأنه ختم ملكي. الشاشات تُصمم من واجهات التطبيق الحقيقية التي يزوّدنا بها العميل <span class="ph">[واجهة التطبيق]</span>، وتُركّب في ما بعد الإنتاج لضمان الوضوح والدقة. لا نعرض أي ميزة غير مؤكدة على الشاشة.</p></div>
+    <div class="ad-row"><h4>السيارات والدراجات</h4><ul class="plain"><li>الأسطول مصفوف كتشكيل عسكري: صفوف متوازية، مسافات متساوية، أضواء أمامية مشتعلة.</li><li>السائقون والدرّاجون بزي موحّد يحمل هوية العلامة، يقفون بجانب مركباتهم كحرس، ثم يركبون في لحظة واحدة.</li><li>المركبات نظيفة لكن غير لامعة بشكل مبالغ؛ نترك عليها غبار الطريق في مشهد الصحراء.</li><li>عدد المركبات وأنواعها وألوانها <span class="ph">[تأكيد من العميل]</span>. يمكن تكثير الصفوف رقمياً عند الحاجة.</li></ul></div>
+    <div class="ad-row"><h4>الحصان الخشبي</h4><p>مجسم عملي جزئي (الأرجل والقاعدة والعجلات) لتفاعل الجنود والحبال، مع إكمال الجسم والرأس رقمياً في اللقطات الواسعة. الخيار الآخر: مؤثر بصري كامل. القرار يعتمد على الميزانية النهائية.</p></div>
+    <div class="ad-row"><h4>لماذا لا يبدو الحديث رخيصاً</h4><ul class="plain"><li>نفس اللوحة اللونية والإضاءة الدافئة على الأسطول وعلى القصر.</li><li>نفس لغة الكاميرا: حركة بطيئة ووزن ملحمي، لا لقطات «سيارة إعلانية» لامعة.</li><li>الأسطول يظهر مرة واحدة وبحجم كبير، لا يتسلل في كل مشهد.</li><li>لا أحد في القصة يعلّق على المفارقة.</li></ul></div>
+  </div>
+</section>
+
+<!-- 8 LIGHT & CAMERA -->
+<section class="chapter" data-title="الإضاءة والتصوير" id="c8">
+  <div class="wrap">
+    <div class="ch-head"><div class="ch-num">08</div><h2>الإضاءة والتصوير</h2><p>سينمائي ناعم ومهيب. الاقتراحات التقنية هنا توجّه أولي يُحسم مع مدير التصوير.</p></div>
+    <h3 style="margin-top:0">مزاج كل فصل</h3>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>الفصل</th><th>مصدر الضوء</th><th>التباين والجو</th><th>اللون</th></tr></thead>
+      <tbody>
+        <tr><td>المملكة</td><td>شمس فجر منخفضة، ضباب خفيف</td><td>منخفض، ناعم، صامت</td><td>أخضر رمادي مع ذهبي في الأفق</td></tr>
+        <tr><td>الخبر</td><td>أعمدة ضوء من النوافذ العالية</td><td>يرتفع قليلاً، ظلال عميقة في الممر</td><td>عنبري دافئ، فحمي</td></tr>
+        <tr><td>المجلس</td><td>ضوء نوافذ + قناديل كمصدر داخلي، وهج الشاشة كإضاءة وجه خفيفة</td><td>متوسط، وجوه منحوتة بضوء جانبي ناعم</td><td>نحاسي وأخضر داكن</td></tr>
+        <tr><td>السؤال</td><td>ضوء يتسرب من شقوق أبواب الشرفة</td><td>يتصاعد نحو الأبيض</td><td>ذهبي يتحول إلى أبيض دافئ</td></tr>
+        <tr><td>الكشف</td><td>شمس نهار ناعمة (يُفضّل الصباح أو قبل الغروب)</td><td>واسع ومفتوح، بلا لمعان قاسٍ على المعدن</td><td>رملي، سماء صافية مائلة للدفء</td></tr>
+        <tr><td>السبق</td><td>شمس عالية نسبياً مع غبار في الجو</td><td>متوسط، غبار يكسر الحدة</td><td>بيج وبني محروق</td></tr>
+        <tr><td>الختام</td><td>تصميم</td><td>هادئ ونظيف</td><td>ألوان هوية العلامة</td></tr>
+      </tbody>
+    </table></div>
+    <h3>الانتقال من الداخل إلى الخارج</h3>
+    <p>نحافظ على حرارة لونية واحدة تقريباً بين نهاية القصر وبداية الخارج، ونرفع شدة الضوء تدريجياً: الأبواب تُفتح على وهج يملأ الكادر، ثم تنكشف اللقطة الجوية من داخل هذا الوهج. هكذا يبدو الانتقال تنفساً واحداً لا قطعاً بين عالمين. التعريض يُضبط في التصحيح اللوني بحيث تنزل اللقطة الجوية من الأبيض إلى تفاصيل الأسطول خلال ثانية تقريباً.</p>
+    <h3>حركة الكاميرا والتكوين</h3>
+    <div class="grid2">
+      <ul class="plain">
+        <li><b>داخل القصر:</b> دوللي بطيء وتكوينات متناظرة توحي بالهيبة. السلطان دائماً في مركز الكادر أو على محور واضح.</li>
+        <li><b>ركضة الحاجب:</b> جيمبل يتراجع أمامه، بإيقاع أسرع، لكسر السكون.</li>
+        <li><b>المجلس:</b> لقطات فوق الكتف وتقاطع نظرات، وزاوية علوية مباشرة لطاولة الخرائط.</li>
+      </ul>
+      <ul class="plain">
+        <li><b>الكشف:</b> لقطة درون صاعدة/متقدمة فوق السور، ثم لقطات منخفضة قريبة من العجلات.</li>
+        <li><b>الصحراء:</b> لقطات جانبية ممتدة (تتبع بسيارة كاميرا إن أمكن) تضع الحصان البطيء والأسطول السريع في نفس الكادر.</li>
+        <li>نحمي منطقة وسط الكادر في كل لقطة رئيسية لتسهيل قصّ نسخة 9:16.</li>
+      </ul>
+    </div>
+    <h3>اقتراحات تقنية أولية</h3>
+    <ul class="plain">
+      <li><b>نسبة العرض:</b> 2.39:1 للنسخة الرئيسية مع حماية 16:9 و9:16.</li>
+      <li><b>الإحساس البصري:</b> عدسات بطابع أنامورفك أو كروية بعتمة ناعمة، توهجات خفيفة غير مبالغ بها. عدسات واسعة (24–35مم تقريباً) للقاعة، ومتوسطة إلى طويلة (50–85مم) للوجوه.</li>
+      <li><b>معدل الإطارات:</b> 24 أو 25 إطاراً حسب معيار البث، و48–60 للقطات الحركة البطيئة (العجلات، الغبار، الأبواب).</li>
+      <li><b>الإضاءة:</b> مصادر كبيرة ومنتشرة، وتعزيز للضوء الطبيعي. نتجنب الإضاءة القاسية المباشرة واللمعان التجاري على المركبات.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 9 SOUND -->
+<section class="chapter" data-title="الصوت والموسيقى" id="c9">
+  <div class="wrap">
+    <div class="ch-head"><div class="ch-num">09</div><h2>الصوت والموسيقى</h2><p>موسيقى أصلية تبني التوتر من صمت القصر إلى هدير الأسطول.</p></div>
+    <div class="narrow">
+      <h3 style="margin-top:0">الفكرة الموسيقية</h3>
+      <p>مقطوعة أصلية تجمع إيقاعاً ملحمياً (طبول عميقة، وتريات منخفضة، نحاس) مع لون محلي محسوب: عود أو قانون بجملة قصيرة، وإيقاع دف خافت. الآلات المحلية تعطي العالم هويته، والأوركسترا تعطيه حجمه. نتجنب الاستخدام الفلكلوري المباشر الذي يحول المشهد إلى كاريكاتير.</p>
+      <h3>خطة بناء التوتر</h3>
+    </div>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>الزمن</th><th>الموسيقى</th><th>الصوت والمؤثرات</th></tr></thead>
+      <tbody>
+        <tr><td>0:00–0:08</td><td>نغمة ممتدة منخفضة، جملة عود منفردة</td><td>رياح خفيفة، طيور فجر، صدى القاعة، نقر أصابع السلطان</td></tr>
+        <tr><td>0:08–0:20</td><td>تتوقف الموسيقى عند دخول الحاجب، ثم نبض طبل خافت</td><td>خطوات تركض وتقترب، احتكاك الستائر، لهاث، صوت فرد الرقّ</td></tr>
+        <tr><td>0:20–0:42</td><td>نبض متصاعد تحت الحوار، وترية بنمط متكرر</td><td>ورق الخريطة، تحول صوتي ناعم عند القطع إلى الشاشة، نقرة التطبيق <span class="ph">[صوت التطبيق إن وجد]</span></td></tr>
+        <tr><td>0:42–0:52</td><td>صمت قصير بعد «والجيش؟» ثم صعود سريع</td><td>صرير الأبواب الثقيلة، اندفاع هواء وضوء</td></tr>
+        <tr><td>0:52–1:06</td><td>الذروة: الثيمة كاملة بالنحاس والطبول</td><td>تشغيل المحركات بالتتابع كطبول حرب، إغلاق الأبواب، خوذ</td></tr>
+        <tr><td>1:06–1:16</td><td>إيقاع مستمر سريع مع لمسة كوميدية خفيفة عند التفات القائد</td><td>صرير خشب الحصان، حبال، مرور المركبات (دوبلر)، غبار</td></tr>
+        <tr><td>1:16–1:22</td><td>ختام الثيمة بنغمة واثقة</td><td>توقيع صوتي للعلامة إن وجد، وإلا نغمة ختام قصيرة</td></tr>
+      </tbody>
+    </table></div>
+    <div class="narrow">
+      <h3>ملاحظات</h3>
+      <ul class="plain">
+        <li>يُسجّل حوار القصر بتسجيل مباشر نظيف، مع إعادة دبلجة (ADR) عند الحاجة بسبب صدى المواقع التراثية.</li>
+        <li>أصوات المحركات تُسجّل من مركبات الأسطول الفعلية إن أمكن.</li>
+        <li>لا نستخدم موسيقى أو مؤثرات محمية بحقوق إلا بترخيص صريح وواضح النطاق. الموسيقى الأصلية تُسلّم بحقوق استخدام يُتفق عليها.</li>
+        <li>الإعلان مفهوم بدون صوت عبر الصورة والترجمة النصية للحوار في نسخ المنصات.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 10 PERFORMANCE -->
+<section class="chapter" data-title="الأداء والشخصيات" id="c10">
+  <div class="wrap">
+    <div class="ch-head"><div class="ch-num">10</div><h2>توجيه الأداء والشخصيات</h2><p>هيبة السلطان ثابتة، وخفة الإيقاع تأتي ممن حوله.</p></div>
+    <div class="ad-row"><h4>السلطان<br><span class="mute small">صادق الشمري</span></h4><div><p><b>الأداء:</b> هدوء كامل وحضور ثقيل. يتحرك قليلاً، وكل حركة مقصودة. الكوميديا عنده في التوقيت لا في التعبير: نصف ابتسامة، حاجب يرتفع، صمت قبل الجملة.</p><p><b>الصوت:</b> منخفض، واضح، عراقي طبيعي بلا تفخيم مسرحي.</p><p><b>الملابس والمظهر:</b> عاجي وأخضر داكن بتطريز نحاسي، عمامة عالية، لحية مرتبة، خاتم واحد بارز.</p></div></div>
+    <div class="ad-row"><h4>الحاجب</h4><div><p><b>الأداء:</b> طاقة عالية، لهاث حقيقي، انحناءات سريعة. يبالغ قليلاً لكنه صادق في خوفه. ينكمش فوراً تحت نظرة السلطان.</p><p><b>الصوت:</b> أعلى وأسرع من الجميع، يتقطع من اللهاث.</p><p><b>الملابس:</b> ثوب رملي، عمامة صغيرة، عصا. حذاء يسمح بالركض الآمن على الأرضية.</p></div></div>
+    <div class="ad-row"><h4>الوزير</h4><div><p><b>الأداء:</b> هادئ وحاد. يقرأ الموقف بسرعة. حين يقدم الخدمات يتكلم بثقة رجل يعرف أدواته، لا كبائع.</p><p><b>الصوت:</b> متوسط، محسوب، ببطء خفيف.</p><p><b>الملابس:</b> فحمي مخضر، قلنسوة عالية، خريطة على الحزام.</p></div></div>
+    <div class="ad-row"><h4>الحرس</h4><div><p>ثابتون كتماثيل. ردة فعل واحدة صغيرة عند ركضة الحاجب (التفاتة رأس). يفتحون أبواب الشرفة بحركة متزامنة.</p></div></div>
+    <div class="ad-row"><h4>السائقون والدرّاجون</h4><div><p>انضباط عسكري: وقفة موحدة، ركوب متزامن، إغلاق خوذ في نفس اللحظة. وجوههم مضاءة جزئياً، والتركيز على الوحدة لا على الأفراد.</p></div></div>
+    <div class="ad-row"><h4>قائد المملكة المعادية وجنوده</h4><div><p>جدية مطلقة في جرّ الحصان، ثم التفاتة بطيئة من القائد حين يمر الأسطول، والغبار يغطي وجهه. ضحكة اللقطة من رد فعله الصامت لا من حركة مبالغ بها.</p></div></div>
+    <div class="note">الحفاظ على الاستمرارية: نفس الأزياء والإكسسوارات وترتيب الخاتم والعمامة طوال مشاهد القصر، مع صور مرجعية لكل شخصية في كل إعداد إضاءة.</div>
+  </div>
+</section>
+
+<!-- 11 CREW -->
+<section class="chapter" data-title="الكادر الفني" id="c11">
+  <div class="wrap">
+    <div class="ch-head"><div class="ch-num">11</div><h2>خطة الإنتاج والكادر الفني</h2><p>التشكيل المقترح. العدد النهائي يعتمد على حجم التنفيذ والمواقع وعدد أيام التصوير ومقدار المؤثرات وبناء الديكور.</p></div>
+
+    <div class="dept">الإخراج والإنتاج</div>
+    <div class="tbl-wrap"><table><thead><tr><th>الدور</th><th>المسؤولية</th></tr></thead><tbody>
+      <tr><td>المخرج</td><td>الرؤية الإبداعية، توجيه الممثلين، اعتماد التكوينات والإيقاع.</td></tr>
+      <tr><td>المنتج المنفذ</td><td>الميزانية، العقود، العلاقة مع العميل، ضمان التسليم.</td></tr>
+      <tr><td>مدير الإنتاج</td><td>الجدولة اليومية، الموارد، المواقع، التنسيق بين الأقسام.</td></tr>
+      <tr><td>مساعد مخرج أول</td><td>جدول التصوير، إدارة الموقع، الإيقاع الزمني لليوم.</td></tr>
+      <tr><td>منسق الممثلين والكاستنغ</td><td>اختيار الوزير والحاجب والحرس والكومبارس، وجداول حضورهم.</td></tr>
+      <tr><td>سكريبت/مشرف استمرارية</td><td>متابعة الاستمرارية بين اللقطات والأزياء والإكسسوارات.</td></tr>
+    </tbody></table></div>
+
+    <div class="dept">الكاميرا والإضاءة</div>
+    <div class="tbl-wrap"><table><thead><tr><th>الدور</th><th>المسؤولية</th></tr></thead><tbody>
+      <tr><td>مدير التصوير</td><td>الأسلوب البصري، الإضاءة، اختيار العدسات والكاميرا.</td></tr>
+      <tr><td>مشغل كاميرا</td><td>تنفيذ اللقطات، خصوصاً المتحركة.</td></tr>
+      <tr><td>فوكس بولر</td><td>دقة التركيز، خصوصاً في الحركة والعدسات المفتوحة.</td></tr>
+      <tr><td>مساعد كاميرا ثانٍ / DIT</td><td>تجهيز الكاميرا، إدارة البيانات والنسخ الاحتياطي.</td></tr>
+      <tr><td>مشغل جيمبل/ستيدي</td><td>ركضة الحاجب ولقطات المتابعة.</td></tr>
+      <tr><td>مشغل درون مرخّص</td><td>لقطة الكشف الجوية ولقطات الصحراء الواسعة.</td></tr>
+      <tr><td>غافر</td><td>رئيس قسم الإضاءة، تنفيذ خطة مدير التصوير.</td></tr>
+      <tr><td>كهربائيون</td><td>تركيب الإضاءة والكهرباء والمولدات بأمان.</td></tr>
+      <tr><td>غريب ومسؤول معدات</td><td>الدوللي والرافعات والحوامل، وتسليم واستلام المعدات.</td></tr>
+    </tbody></table></div>
+
+    <div class="dept">الفن والأزياء والمظهر</div>
+    <div class="tbl-wrap"><table><thead><tr><th>الدور</th><th>المسؤولية</th></tr></thead><tbody>
+      <tr><td>مصمم الإنتاج</td><td>تصميم عالم المملكة الكامل وتوحيده.</td></tr>
+      <tr><td>المخرج الفني</td><td>تنفيذ التصميم في المواقع، الإشراف على البناء.</td></tr>
+      <tr><td>مسؤول الديكور</td><td>تجهيز القاعة والممر والشرفة، والفرش والسجاد.</td></tr>
+      <tr><td>مسؤول الإكسسوارات</td><td>الرسالة، الخريطة، غلاف الهاتف، العرش، الحصان الخشبي.</td></tr>
+      <tr><td>مصمم/مسؤول الأزياء</td><td>تصميم وتنفيذ أزياء الشخصيات والحرس والجنود وزي الأسطول.</td></tr>
+      <tr><td>مستشار تاريخي/مصمم شخصيات</td><td>عند الحاجة، لضمان الأصالة وتجنب أي إساءة ثقافية.</td></tr>
+      <tr><td>ميكب آرتست</td><td>مكياج الشخصيات، الغبار والعرق في المشاهد الخارجية.</td></tr>
+      <tr><td>مصفف شعر</td><td>اللحى والشعر والعمائم واستمراريتها.</td></tr>
+    </tbody></table></div>
+
+    <div class="dept">المواقع والحركة والسلامة</div>
+    <div class="tbl-wrap"><table><thead><tr><th>الدور</th><th>المسؤولية</th></tr></thead><tbody>
+      <tr><td>مدير المواقع</td><td>البحث عن المواقع، التصاريح، التنسيق مع الجهات المالكة.</td></tr>
+      <tr><td>مسؤول المركبات</td><td>تنسيق الأسطول، الترتيب في التشكيل، الوقود والجاهزية.</td></tr>
+      <tr><td>سائقون ودرّاجون</td><td>قيادة الأسطول أمام الكاميرا، بخبرة في القيادة المنسقة.</td></tr>
+      <tr><td>منسق حركة آمنة</td><td>تصميم حركة المركبات قرب الممثلين والكاميرا، وإيقافها فوراً عند الحاجة.</td></tr>
+      <tr><td>مسؤول حيوانات</td><td>فقط إذا استُخدم حصان حقيقي (مثلاً لقائد المملكة المعادية).</td></tr>
+      <tr><td>كومبارس</td><td>حرس القصر، جنود المملكة المعادية.</td></tr>
+      <tr><td>سلامة وإسعافات أولية</td><td>مسعف في الموقع، خطة طوارئ، مياه وظل في الصحراء.</td></tr>
+      <tr><td>خدمة الموقع والضيافة</td><td>الطعام والمياه وأماكن الراحة.</td></tr>
+      <tr><td>النقل</td><td>نقل الفريق والمعدات والمركبات بين المواقع.</td></tr>
+    </tbody></table></div>
+
+    <div class="dept">الصوت وما بعد الإنتاج</div>
+    <div class="tbl-wrap"><table><thead><tr><th>الدور</th><th>المسؤولية</th></tr></thead><tbody>
+      <tr><td>مهندس تسجيل صوت</td><td>تسجيل الحوار المباشر وأصوات المحركات.</td></tr>
+      <tr><td>بوم أوبريتر</td><td>التقاط الصوت في المشاهد الواسعة.</td></tr>
+      <tr><td>مدير ما بعد الإنتاج</td><td>جدولة المونتاج والصوت والألوان والمؤثرات والتسليم.</td></tr>
+      <tr><td>المونتير</td><td>بناء الإيقاع والنسخ والقصّات.</td></tr>
+      <tr><td>مصمم الصوت</td><td>المؤثرات، المكساج، الأجواء.</td></tr>
+      <tr><td>ملحن/مشرف موسيقي</td><td>الموسيقى الأصلية أو ترخيص الموسيقى.</td></tr>
+      <tr><td>مصحح الألوان</td><td>توحيد اللوحة اللونية والانتقال من الداخل إلى الخارج.</td></tr>
+      <tr><td>VFX/موشن</td><td>إكمال الحصان، تكثير الأسطول عند الحاجة، تنظيف اللقطات.</td></tr>
+      <tr><td>مصمم جرافيك للتطبيق</td><td>تركيب واجهات التطبيق على الشاشة وشاشة الختام.</td></tr>
+      <tr><td>مصور كواليس</td><td>إذا كان ضمن النطاق المعتمد.</td></tr>
+    </tbody></table></div>
+  </div>
+</section>
+
+<!-- 12 LOCATIONS -->
+<section class="chapter" data-title="المواقع واللوجستيات" id="c12">
+  <div class="wrap">
+    <div class="ch-head"><div class="ch-num">12</div><h2>خطة مواقع التصوير واللوجستيات</h2><p>احتياجات أولية. لا توجد حالياً مواقع أو تصاريح محجوزة.</p></div>
+    <h3 style="margin-top:0">احتياجات المواقع</h3>
+    <div class="ad-row"><h4>القصر (داخلي)</h4><p>قاعة واسعة بأعمدة وأقواس ونوافذ عالية، وممر طويل، وشرفة بأبواب كبيرة. الخيارات: مبنى تراثي أو تاريخي الطابع بتصريح تصوير، أو ديكور مبني في استوديو مع امتداد رقمي للسقف والعمق، أو مزيج من الاثنين. الشرفة قد تُصوّر في موقع منفصل وتُدمج في المونتاج.</p></div>
+    <div class="ad-row"><h4>الساحة والبوابة (خارجي)</h4><p>مساحة مفتوحة أمام واجهة أو سور بطابع تاريخي تكفي لاصطفاف الأسطول، مع إمكانية التصوير الجوي. يمكن إكمال الواجهة أو السور رقمياً عند الحاجة.</p></div>
+    <div class="ad-row"><h4>الطريق الصحراوي</h4><p>طريق مستقيم طويل وخالٍ، بأفق مفتوح، وأرض صلبة بجانبه لحركة الحصان والجنود وسيارة الكاميرا. يحتاج إغلاقاً مؤقتاً أو تنسيقاً مع الجهات المختصة.</p></div>
+    <h3>أيام التصوير المتوقعة</h3>
+    <div class="tbl-wrap"><table><thead><tr><th>اليوم</th><th>المحتوى</th><th>ملاحظات</th></tr></thead><tbody>
+      <tr><td>يوم 1</td><td>القصر: القاعة، الممر، المجلس، الشرفة من الداخل</td><td>المشاهد 1–4، معظم الحوار</td></tr>
+      <tr><td>يوم 2</td><td>الساحة والبوابة: اصطفاف الأسطول، الشرفة من الخارج، الدرون</td><td>المشهد 5، يعتمد على الضوء الصباحي أو قبل الغروب</td></tr>
+      <tr><td>يوم 3 (حسب النطاق)</td><td>الطريق الصحراوي: الحصان والجنود والأسطول</td><td>المشهد 6، وقد يُدمج مع اليوم 2 إذا كانت المواقع قريبة</td></tr>
+    </tbody></table></div>
+    <p>النطاق المبدئي: <b>يومان إلى ثلاثة أيام تصوير</b>، بالإضافة إلى أيام تجهيز وبناء ديكور قبلها، ويوم تجربة كاميرا وأزياء. العدد النهائي يُحسم بعد اختيار المواقع.</p>
+    <h3>اللوجستيات</h3>
+    <div class="grid2">
+      <ul class="plain">
+        <li><b>التصاريح:</b> تصوير في مبنى تراثي، إغلاق طريق، تصوير جوي بالدرون، وأي جهة مالكة للمواقع.</li>
+        <li><b>السيطرة على الموقع:</b> حواجز، فريق تنظيم، منع دخول غير المصرح لهم أثناء حركة المركبات.</li>
+        <li><b>نقل الأسطول:</b> شاحنات نقل أو قيادة منسقة إلى الموقع، منطقة انتظار ووقود، وفحص المركبات قبل التصوير.</li>
+      </ul>
+      <ul class="plain">
+        <li><b>الطقس:</b> متابعة الحرارة والغبار والرياح. يوم احتياطي مقترح للمشاهد الخارجية، وتصوير مبكر لتجنب الحر.</li>
+        <li><b>السلامة:</b> منسق حركة آمنة، مسافات محددة بين المركبات والممثلين والكاميرا، مسعف، مياه وظل، وخطة إخلاء.</li>
+        <li><b>الحيوانات:</b> عند استخدام حصان حقيقي: مسؤول حيوانات، راحة ومياه، وأدنى تعرض للضوضاء.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 13 POST -->
+<section class="chapter" data-title="ما بعد الإنتاج والتسليمات" id="c13">
+  <div class="wrap">
+    <div class="ch-head"><div class="ch-num">13</div><h2>ما بعد الإنتاج والتسليمات</h2><p>من المونتاج إلى النسخ النهائية لكل منصة.</p></div>
+    <div class="grid3">
+      <div class="rule-top"><h4 style="margin-top:0">المونتاج</h4><p class="small">نسخة أولية، ثم جولتا تعديل مع العميل، ثم النسخة المقفلة.</p></div>
+      <div class="rule-top"><h4 style="margin-top:0">الصوت والموسيقى</h4><p class="small">تصميم الصوت، المكساج، الموسيقى، وتسجيل الحوار الإضافي إن لزم.</p></div>
+      <div class="rule-top"><h4 style="margin-top:0">الألوان والمؤثرات</h4><p class="small">تصحيح ألوان كامل، إكمال الحصان، تكثير الأسطول عند الحاجة، تركيب الشاشات وشاشة الختام.</p></div>
+    </div>
+    <h3>نطاق التسليم المقترح</h3>
+    <p class="mute small">تقسيم مقترح للنقاش، ويُثبَّت في العرض النهائي بعد تحديد النسخ والمنصات.</p>
+    <div class="grid2">
+      <div>
+        <h4>داخل السعر المبدئي</h4>
+        <ul class="plain">
+          <li>نسخة رئيسية واحدة بالمدة المعتمدة (60–90 ثانية).</li>
+          <li>مقاس 16:9 للنسخة الرئيسية، ومقاس 9:16 لها.</li>
+          <li>جولتا تعديل على المونتاج.</li>
+          <li>تصحيح ألوان، تصميم صوت ومكساج.</li>
+          <li>شاشة ختام بالشعار وعناصر التطبيق المزوّدة من العميل.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>يحتاج تسعيراً إضافياً</h4>
+        <ul class="plain">
+          <li>قصّات إضافية (30 / 15 / 6 ثوانٍ) لكل منصة.</li>
+          <li>مقاسات إضافية (1:1، 4:5) أو نسخ بلغات أخرى.</li>
+          <li>نسخ ترجمة نصية ونسخ بث بمواصفات قنوات محددة.</li>
+          <li>موسيقى بحقوق موسعة أو حصرية.</li>
+          <li>مؤثرات بصرية واسعة تتجاوز الحصان وتكثير الأسطول.</li>
+          <li>مادة كواليس، صور ثابتة للحملة، أو نسخة النهاية البديلة.</li>
+          <li>جولات تعديل إضافية بعد قفل المونتاج.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">عدد النسخ النهائية والمنصات <span class="ph">[يحتاج تحديداً]</span>. حماية وسط الكادر أثناء التصوير تجعل نسخ 9:16 ممكنة بلا إعادة تصوير.</div>
+  </div>
+</section>
+
+<!-- 14 COST -->
+<section class="chapter" data-title="التكلفة المبدئية" id="c14">
+  <div class="wrap">
+    <div class="ch-head"><div class="ch-num">14</div><h2>التكلفة المبدئية</h2><p>سعر بداية تقديري، وليس سعراً نهائياً أو سقفاً للميزانية.</p></div>
+    <div class="cost">
+      <div class="from">تبدأ الميزانية الإنتاجية من</div>
+      <div class="amt">$20,000</div>
+      <div class="cur">عشرون ألف دولار أمريكي</div>
+    </div>
+    <div class="narrow">
+      <p>هذا الرقم نقطة انطلاق لتقدير حجم المشروع. قد ترتفع الميزانية حسب تفاصيل التنفيذ النهائية، ولا يتضمن هذا العرض توزيعاً تفصيلياً على البنود إلى حين توفر عروض أسعار فعلية من المواقع والموردين.</p>
+      <h4>عوامل قد ترفع الميزانية</h4>
+      <div class="chips">
+        <span>تفاصيل السيناريو النهائي</span><span>عدد أيام التصوير</span><span>المواقع</span><span>بناء الديكور</span><span>حجم الأسطول</span><span>الممثلون والكومبارس</span><span>التصاريح</span><span>السفر</span><span>المؤثرات البصرية</span><span>الموسيقى</span><span>عدد النسخ والتسليمات</span>
+      </div>
+      <p>يصدر العرض المالي النهائي بعد اعتماد المعالجة والستوري بورد وخطة الإنتاج.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 15 ASSUMPTIONS -->
+<section class="chapter" data-title="الافتراضات والاعتمادات" id="c15">
+  <div class="wrap">
+    <div class="ch-head"><div class="ch-num">15</div><h2>الافتراضات وما يحتاج اعتماد العميل</h2><p>نقاط يجب حسمها قبل الانتقال إلى ما قبل الإنتاج.</p></div>
+    <div class="tbl-wrap"><table><thead><tr><th>البند</th><th>الافتراض الحالي في هذا العرض</th><th>المطلوب من العميل</th></tr></thead><tbody>
+      <tr><td>مدة الإعلان</td><td>نحو 82 ثانية ضمن نطاق 60–90</td><td>اعتماد المدة والقصّات</td></tr>
+      <tr><td>خدمات التطبيق</td><td>تسميات تحريرية بين أقواس</td><td>قائمة الخدمات وأولوية ظهورها</td></tr>
+      <tr><td>أسماء المنتجات والخصائص</td><td>غير مذكورة</td><td>الأسماء الرسمية وطريقة كتابتها</td></tr>
+      <tr><td>الشعار الإعلاني</td><td>أربعة خيارات مقترحة غير رسمية</td><td>الشعار الرسمي أو اختيار أحد المقترحات</td></tr>
+      <tr><td>واجهات التطبيق</td><td>تُركّب في ما بعد الإنتاج</td><td>ملفات الشاشات والشعار وعناصر التحميل</td></tr>
+      <tr><td>عدد السيارات والدراجات</td><td>تشكيل كبير قابل للتكثير رقمياً</td><td>العدد المتاح، الأنواع، الألوان، الزي</td></tr>
+      <tr><td>المواقع</td><td>قصر تراثي أو ديكور، ساحة، طريق صحراوي</td><td>الموافقة على نوع المواقع وأي تفضيلات</td></tr>
+      <tr><td>الممثلون</td><td>صادق الشمري بدور السلطان</td><td>تأكيد التعاقد، والموافقة على كاستنغ الأدوار الأخرى</td></tr>
+      <tr><td>الحصان</td><td>مجسم جزئي + إكمال رقمي</td><td>مجسم كامل، مؤثر بصري كامل، أو حصان حقيقي للقائد</td></tr>
+      <tr><td>اسم الفكرة</td><td>«حصان طروادة» اسم عمل مؤقت</td><td>الإبقاء عليه داخلياً أو تغييره</td></tr>
+      <tr><td>التسليمات والمنصات</td><td>نسخة رئيسية بمقاسين</td><td>قائمة المنصات والنسخ المطلوبة</td></tr>
+    </tbody></table></div>
+  </div>
+</section>
+
+<!-- 16 CLOSING -->
+<section class="chapter" data-title="الخاتمة" id="c16">
+  <div class="wrap closing">
+    <h2>المملكة جاهزة. الطريق جاهز.</h2>
+    <p class="lead" style="max-width:40ch">نقترح اعتماد هذه المعالجة للانتقال إلى تطوير ما قبل الإنتاج، وتحويل الفكرة إلى إعلان يتذكره الناس.</p>
+    <ol class="next-steps">
+      <li>اعتماد المعالجة والشعار</li>
+      <li>تأكيد الخدمات والمواد</li>
+      <li>معاينة المواقع والكاستنغ</li>
+      <li>العرض المالي النهائي</li>
+    </ol>
+    <div class="mark">REX <b>Group</b></div>
+    <div class="slogan">REX — Rules End. Xperiments Begin.</div>
+  </div>
+</section>
+
+</main>
+
+<nav class="nav" aria-label="التنقل بين الفصول">
+  <button id="prev" aria-label="الفصل السابق"><span aria-hidden="true">→</span><span class="lbl" id="prevLbl">السابق</span></button>
+  <div class="count" aria-live="polite"><b id="cur">1</b> / <span id="tot">17</span></div>
+  <button id="next" class="primary" aria-label="الفصل التالي"><span class="lbl" id="nextLbl">التالي</span><span aria-hidden="true">←</span></button>
+</nav>
+
+<script>
+(function(){
+"use strict";
+/* ================= SVG PRE-VIZ PRIMITIVES ================= */
+const f = n => Math.round(n*10)/10;
+const SIL = "#0D0A07", RIM = "rgba(215,177,107,.5)", WOOD = "#6B4A2A";
+
+function arch(x,y,w,h,fill,extra){ // pointed arch, base at y
+  const r=w/2;
+  return `<path d="M${f(x)} ${f(y)} V${f(y-h+r)} Q${f(x)} ${f(y-h)} ${f(x+r)} ${f(y-h-r*0.35)} Q${f(x+w)} ${f(y-h)} ${f(x+w)} ${f(y-h+r)} V${f(y)} Z" fill="${fill}" ${extra||""}/>`;
+}
+function person(o){
+  const k=o.k||"hajib", x=o.x, y=o.y, h=o.h, lean=o.lean||0;
+  const c=o.c||(k==="soldier"||k==="commander"?"#3E2419":SIL), rim=o.rim||RIM, sw=f(Math.max(h*0.006,0.3));
+  const r=h*0.085, hy=y-h+r*1.9, sh=hy+r*1.3;
+  let s1=h*0.15, b1=h*0.21;
+  if(k==="rider"){ s1=h*0.14; b1=h*0.15; }
+  let s=`<g transform="rotate(${lean} ${f(x)} ${f(y)})">`;
+  if(k==="hajib") s+=`<line x1="${f(x+b1*0.95)}" y1="${f(y)}" x2="${f(x+b1*0.7)}" y2="${f(hy-r*1.6)}" stroke="#A8703C" stroke-width="${f(h*0.018)}" stroke-linecap="round"/>`;
+  if(k==="guard"||k==="soldier") s+=`<line x1="${f(x-b1*0.9)}" y1="${f(y)}" x2="${f(x-b1*0.9)}" y2="${f(hy-r*3.2)}" stroke="${k==="guard"?"#2A1E12":"#3E2419"}" stroke-width="${f(h*0.016)}"/><path d="M${f(x-b1*0.9-r*0.3)} ${f(hy-r*3.2)} L${f(x-b1*0.9)} ${f(hy-r*4.2)} L${f(x-b1*0.9+r*0.3)} ${f(hy-r*3.2)}Z" fill="#8A6A3E"/>`;
+  s+=`<path d="M${f(x-s1)} ${f(sh)} Q${f(x)} ${f(sh-r*0.6)} ${f(x+s1)} ${f(sh)} L${f(x+b1)} ${f(y)} L${f(x-b1)} ${f(y)} Z" fill="${c}" stroke="${rim}" stroke-width="${sw}"/>`;
+  if(k==="rider"){ s+=`<circle cx="${f(x)}" cy="${f(hy)}" r="${f(r*1.3)}" fill="${c}" stroke="${rim}" stroke-width="${sw}"/><rect x="${f(x-r*0.9)}" y="${f(hy-r*0.3)}" width="${f(r*1.8)}" height="${f(r*0.55)}" rx="${f(r*0.2)}" fill="#3A3A36"/>`; return s+"</g>"; }
+  s+=`<circle cx="${f(x)}" cy="${f(hy)}" r="${f(r)}" fill="${c}" stroke="${rim}" stroke-width="${sw}"/>`;
+  if(k==="sultan") s+=`<ellipse cx="${f(x)}" cy="${f(hy-r*0.85)}" rx="${f(r*1.32)}" ry="${f(r*0.9)}" fill="${c}" stroke="${rim}" stroke-width="${sw}"/><circle cx="${f(x)}" cy="${f(hy-r*1.05)}" r="${f(r*0.2)}" fill="#3E8E5E"/>`;
+  if(k==="vizier") s+=`<path d="M${f(x-r*0.9)} ${f(hy-r*0.45)} L${f(x-r*0.62)} ${f(hy-r*2.7)} L${f(x+r*0.62)} ${f(hy-r*2.7)} L${f(x+r*0.9)} ${f(hy-r*0.45)} Z" fill="${c}" stroke="${rim}" stroke-width="${sw}"/>`;
+  if(k==="hajib") s+=`<ellipse cx="${f(x)}" cy="${f(hy-r*0.72)}" rx="${f(r*1.05)}" ry="${f(r*0.55)}" fill="${c}" stroke="${rim}" stroke-width="${sw}"/>`;
+  if(k==="guard"||k==="soldier"||k==="commander") s+=`<path d="M${f(x-r*1.05)} ${f(hy-r*0.1)} Q${f(x)} ${f(hy-r*2.4)} ${f(x+r*1.05)} ${f(hy-r*0.1)} Z" fill="${k==="guard"?"#6E5636":"#5A3424"}"/>`;
+  if(k==="commander") s+=`<path d="M${f(x)} ${f(hy-r*1.4)} q${f(r*1.6)} ${f(-r*1.2)} ${f(r*2.6)} ${f(-r*0.2)}" stroke="#8C3A2A" stroke-width="${f(r*0.5)}" fill="none" stroke-linecap="round"/>`;
+  return s+"</g>";
+}
+function car(x,y,w,o){
+  o=o||{}; const h=w*0.3, c=o.c||"#15130F", face=o.face||-1;
+  let s=`<path d="M${f(x)} ${f(y-h*0.28)} Q${f(x)} ${f(y-h*0.6)} ${f(x+w*0.12)} ${f(y-h*0.62)} L${f(x+w*0.28)} ${f(y-h*0.64)} L${f(x+w*0.38)} ${f(y-h)} L${f(x+w*0.72)} ${f(y-h)} L${f(x+w*0.84)} ${f(y-h*0.62)} L${f(x+w*0.97)} ${f(y-h*0.56)} Q${f(x+w)} ${f(y-h*0.45)} ${f(x+w)} ${f(y-h*0.28)} Z" fill="${c}" stroke="rgba(215,177,107,.35)" stroke-width="${f(w*0.01)}"/>`;
+  s+=`<path d="M${f(x+w*0.41)} ${f(y-h*0.93)} L${f(x+w*0.55)} ${f(y-h*0.93)} L${f(x+w*0.55)} ${f(y-h*0.66)} L${f(x+w*0.33)} ${f(y-h*0.66)}Z" fill="#3B4A44" opacity=".8"/>`;
+  [0.2,0.8].forEach(p=>{ s+=`<circle cx="${f(x+w*p)}" cy="${f(y-h*0.22)}" r="${f(h*0.24)}" fill="#050403"/><circle cx="${f(x+w*p)}" cy="${f(y-h*0.22)}" r="${f(h*0.1)}" fill="#6E6A60"/>`; });
+  const lx = face<0 ? x+w*0.01 : x+w*0.99;
+  if(o.lights!==false) s+=`<ellipse cx="${f(lx)}" cy="${f(y-h*0.42)}" rx="${f(w*0.04)}" ry="${f(h*0.08)}" fill="#FFF1CC" filter="url(#glow)"/>`;
+  return s;
+}
+function bike(x,y,w,o){
+  o=o||{}; const r=w*0.2, c=o.c||"#15130F";
+  let s=`<circle cx="${f(x+r)}" cy="${f(y-r)}" r="${f(r)}" fill="none" stroke="#050403" stroke-width="${f(w*0.06)}"/><circle cx="${f(x+w-r)}" cy="${f(y-r)}" r="${f(r)}" fill="none" stroke="#050403" stroke-width="${f(w*0.06)}"/>`;
+  s+=`<path d="M${f(x+r)} ${f(y-r)} L${f(x+w*0.42)} ${f(y-r*2.1)} L${f(x+w*0.7)} ${f(y-r*2.1)} L${f(x+w-r)} ${f(y-r)} M${f(x+w*0.42)} ${f(y-r*2.1)} L${f(x+w*0.55)} ${f(y-r)}" stroke="${c}" stroke-width="${f(w*0.07)}" fill="none" stroke-linejoin="round"/>`;
+  s+=`<path d="M${f(x+w*0.48)} ${f(y-r*2.1)} L${f(x+w*0.36)} ${f(y-r*3.6)} L${f(x+w*0.12)} ${f(y-r*3.4)}" stroke="${c}" stroke-width="${f(w*0.12)}" fill="none" stroke-linecap="round"/><circle cx="${f(x+w*0.16)}" cy="${f(y-r*4.1)}" r="${f(w*0.1)}" fill="${c}" stroke="rgba(215,177,107,.35)" stroke-width="${f(w*0.012)}"/>`;
+  if(o.lights!==false) s+=`<circle cx="${f(x+w*0.02)}" cy="${f(y-r*2)}" r="${f(w*0.035)}" fill="#FFF1CC" filter="url(#glow)"/>`;
+  return s;
+}
+function woodHorse(x,y,w,o){
+  o=o||{}; const fill=o.outline?"none":(o.c||WOOD), st=o.outline?"#5A3A1C":"#3A2614", sw=f(w*(o.outline?0.012:0.008));
+  const g=(d)=>`<path d="${d}" fill="${fill}" stroke="${st}" stroke-width="${sw}" stroke-linejoin="round"/>`;
+  let s="";
+  s+=g(`M${f(x)} ${f(y-w*0.1)} H${f(x+w)} V${f(y-w*0.04)} H${f(x)} Z`);
+  [0.1,0.35,0.65,0.9].forEach(p=>{ s+=`<circle cx="${f(x+w*p)}" cy="${f(y-w*0.035)}" r="${f(w*0.035)}" fill="${o.outline?"none":"#2A1A0E"}" stroke="${st}" stroke-width="${sw}"/>`; });
+  [[0.2,0.28],[0.3,0.38],[0.58,0.66],[0.68,0.76]].forEach(p=>{ s+=g(`M${f(x+w*p[0])} ${f(y-w*0.1)} L${f(x+w*p[0]+w*0.01)} ${f(y-w*0.48)} L${f(x+w*p[1])} ${f(y-w*0.48)} L${f(x+w*p[1])} ${f(y-w*0.1)} Z`); });
+  s+=g(`M${f(x+w*0.15)} ${f(y-w*0.46)} Q${f(x+w*0.13)} ${f(y-w*0.68)} ${f(x+w*0.3)} ${f(y-w*0.7)} L${f(x+w*0.7)} ${f(y-w*0.7)} Q${f(x+w*0.84)} ${f(y-w*0.66)} ${f(x+w*0.8)} ${f(y-w*0.46)} Z`);
+  s+=g(`M${f(x+w*0.66)} ${f(y-w*0.66)} L${f(x+w*0.8)} ${f(y-w*1.02)} L${f(x+w*0.9)} ${f(y-w*1.0)} L${f(x+w*0.84)} ${f(y-w*0.62)} Z`);
+  s+=g(`M${f(x+w*0.76)} ${f(y-w*1.08)} L${f(x+w*1.04)} ${f(y-w*0.98)} L${f(x+w*1.02)} ${f(y-w*0.88)} L${f(x+w*0.8)} ${f(y-w*0.92)} Z`);
+  s+=g(`M${f(x+w*0.8)} ${f(y-w*1.06)} L${f(x+w*0.78)} ${f(y-w*1.18)} L${f(x+w*0.86)} ${f(y-w*1.08)} Z`);
+  s+=`<path d="M${f(x+w*0.16)} ${f(y-w*0.62)} Q${f(x+w*0.02)} ${f(y-w*0.6)} ${f(x+w*0.05)} ${f(y-w*0.4)}" stroke="${st}" stroke-width="${f(w*0.02)}" fill="none"/>`;
+  for(let i=1;i<4;i++) s+=`<line x1="${f(x+w*0.2)}" y1="${f(y-w*(0.5+i*0.05))}" x2="${f(x+w*0.76)}" y2="${f(y-w*(0.5+i*0.05))}" stroke="${st}" stroke-width="${f(w*0.004)}" opacity=".6"/>`;
+  return s;
+}
+function throne(x,y,h){
+  const w=h*0.7;
+  return arch(x-w/2,y,w,h*1.25,"#24180E",`stroke="#A8703C" stroke-width="${f(h*0.02)}"`)+`<rect x="${f(x-w*0.62)}" y="${f(y-h*0.42)}" width="${f(w*1.24)}" height="${f(h*0.1)}" fill="#2E1F12" stroke="#A8703C" stroke-width="${f(h*0.015)}"/>`;
+}
+function dome(x,base,w,c){ return `<path d="M${f(x)} ${f(base)} Q${f(x)} ${f(base-w*0.75)} ${f(x+w/2)} ${f(base-w*0.85)} Q${f(x+w)} ${f(base-w*0.75)} ${f(x+w)} ${f(base)} Z" fill="${c}"/><rect x="${f(x+w/2-0.3)}" y="${f(base-w*1.05)}" width="0.6" height="${f(w*0.22)}" fill="${c}"/>`; }
+function skyline(base,c,scale){
+  scale=scale||1; let s=`<rect x="0" y="${f(base)}" width="240" height="${f(100-base)}" fill="${c}"/>`;
+  s+=`<path d="M0 ${f(base)} ${Array.from({length:49},(_,i)=>`L${i*5} ${f(base-(i%2?2.5:4)*scale)}`).join(" ")} L240 ${f(base)} Z" fill="${c}"/>`;
+  [[30,14],[70,10],[104,22],[150,12],[186,16]].forEach(d=>{ s+=`<rect x="${f(d[0])}" y="${f(base-6*scale)}" width="${f(d[1])}" height="${f(6*scale)}" fill="${c}"/>`+dome(d[0],base-6*scale,d[1],c); });
+  [[60,1.6,26],[136,1.8,32],[214,1.4,22]].forEach(m=>{ s+=`<rect x="${m[0]}" y="${f(base-m[2]*scale)}" width="${m[1]}" height="${f(m[2]*scale)}" fill="${c}"/><circle cx="${f(m[0]+m[1]/2)}" cy="${f(base-m[2]*scale)}" r="${f(m[1]*0.9)}" fill="${c}"/>`; });
+  return s;
+}
+/* ---------- backgrounds ---------- */
+function bgKingdom(){
+  let s=`<rect width="240" height="100" fill="url(#gDawn)"/><ellipse cx="150" cy="70" rx="70" ry="14" fill="#F6D7A0" opacity=".6" filter="url(#blur3)"/>`;
+  s+=`<g opacity=".55">${skyline(68,"#4A3E30",0.8)}</g>`+skyline(78,"#221C14",1.1);
+  s+=`<rect y="74" width="240" height="14" fill="#EBD3A8" opacity=".18" filter="url(#blur3)"/>`;
+  [[44,60],[118,49],[196,58]].forEach(b=>{ s+=`<line x1="${b[0]}" y1="${b[1]}" x2="${b[0]}" y2="${b[1]+12}" stroke="#221C14" stroke-width=".5"/><path d="M${b[0]} ${b[1]} q4 1 7 0 v4 q-3 1 -7 0z" fill="#1C3A2D"/>`; });
+  return s;
+}
+function bgHall(low){
+  const top = low?-15:5;
+  let s=`<rect width="240" height="100" fill="url(#gHall)"/>`;
+  s+=arch(95,80,50,62,"#0F0B07");
+  [[64,32],[164,32]].forEach(w=>{ s+=arch(w[0],w[1],12,20,"#E8C68A",`opacity=".55"`); s+=`<polygon points="${w[0]},${w[1]} ${w[0]+12},${w[1]} ${w[0]+44},100 ${w[0]+8},100" fill="url(#gShaft)"/>`; });
+  s+=`<rect y="80" width="240" height="20" fill="url(#gFloor)"/><path d="M95 80 L60 100 M145 80 L180 100 M120 80 V100" stroke="#4A3820" stroke-width=".4" opacity=".6"/>`;
+  [10,44,184,218].forEach(x=>{ s+=`<rect x="${x}" y="${top}" width="12" height="${100-top}" fill="#120D08"/><rect x="${x-2}" y="${top+(low?20:6)}" width="16" height="3" fill="#1C140C"/>`; });
+  s+=`<path d="M22 ${top+8} Q33 ${top-8} 44 ${top+8} M196 ${top+8} Q207 ${top-8} 218 ${top+8}" stroke="#2A1E12" stroke-width="3" fill="none"/>`;
+  return s;
+}
+function bgCorridor(){
+  let s=`<rect width="240" height="100" fill="#120D08"/>`;
+  const cols=["#1B140D","#221910","#2B2014","#352718","#43301C","#D9B57A"];
+  for(let i=0;i<6;i++){ const k=Math.pow(0.66,i), w=200*k, h=96*k; s+=arch(120-w/2,100-(100-58)*(1-k),w,h,cols[i]); }
+  s+=`<path d="M120 58 L0 100 M120 58 L240 100 M120 58 L70 100 M120 58 L170 100" stroke="#3A2A18" stroke-width=".4"/>`;
+  s+=`<path d="M0 0 Q14 30 6 60 T12 100 L0 100Z M240 0 Q226 30 234 60 T228 100 L240 100Z" fill="#1C3A2D" opacity=".85"/>`;
+  s+=`<ellipse cx="120" cy="60" rx="18" ry="16" fill="url(#gLamp)" opacity=".5"/>`;
+  return s;
+}
+function bgClose(){
+  return `<rect width="240" height="100" fill="url(#gBokeh)"/><g filter="url(#blur3)" opacity=".55">${arch(20,100,40,90,"#3A2A18")}${arch(180,100,40,90,"#3A2A18")}</g><g fill="#E8C68A" filter="url(#blur3)"><circle cx="40" cy="22" r="5" opacity=".25"/><circle cx="205" cy="30" r="7" opacity=".2"/><circle cx="185" cy="14" r="3" opacity=".3"/><circle cx="58" cy="40" r="3" opacity=".2"/></g>`;
+}
+function bgFlood(){
+  return `<rect width="240" height="100" fill="url(#gFlood)"/><g filter="url(#blur3)" opacity=".5"><rect x="0" y="60" width="240" height="40" fill="#C9A372"/>${skyline(70,"#B08A5E",0.9)}</g>`;
+}
+function bgTable(){
+  let s=`<rect width="240" height="100" fill="#2B1E12"/>`;
+  for(let i=0;i<8;i++) s+=`<path d="M0 ${i*13+4} Q120 ${i*13+8} 240 ${i*13+2}" stroke="#3A2918" stroke-width=".6" fill="none"/>`;
+  s+=`<g transform="rotate(-3 120 50)"><rect x="45" y="12" width="150" height="78" fill="url(#gParch)"/><rect x="45" y="12" width="150" height="78" fill="none" stroke="#7A5A30" stroke-width=".6"/>`;
+  s+=`<g stroke="#B07A2E" stroke-width="1.1" fill="none" stroke-linecap="round"><path d="M120 50 Q95 40 62 24"/><path d="M120 50 Q140 30 180 22"/><path d="M120 50 Q150 58 186 74"/><path d="M120 50 Q100 66 70 80"/><path d="M120 50 L120 86"/><path d="M120 50 Q88 52 52 50"/></g>`;
+  s+=`<circle cx="120" cy="50" r="4" fill="#5A3A1C"/><g fill="#5A3A1C">${[[62,24],[180,22],[186,74],[70,80],[120,86],[52,50]].map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="1.6"/>`).join("")}</g></g>`;
+  s+=`<g fill="#4A2F1E"><rect x="-10" y="40" width="40" height="18" rx="6" fill="#1C3A2D"/><ellipse cx="40" cy="50" rx="11" ry="8"/><ellipse cx="50" cy="44" rx="6" ry="2.4"/><ellipse cx="51" cy="49" rx="6.5" ry="2.4"/><ellipse cx="50" cy="54" rx="6" ry="2.4"/><rect x="210" y="38" width="40" height="18" rx="6" fill="#1C3A2D"/><ellipse cx="200" cy="47" rx="11" ry="8"/><ellipse cx="190" cy="42" rx="6" ry="2.4"/><ellipse cx="189" cy="47" rx="6.5" ry="2.4"/><ellipse cx="190" cy="52" rx="6" ry="2.4"/></g>`;
+  return s;
+}
+function phone(x,y,w,rot,glowUi){
+  const h=w*2.05;
+  let s=`<g transform="rotate(${rot||0} ${f(x+w/2)} ${f(y+h/2)})"><rect x="${f(x-w*0.08)}" y="${f(y-w*0.08)}" width="${f(w*1.16)}" height="${f(h+w*0.16)}" rx="${f(w*0.16)}" fill="#A8703C" stroke="#D7B16B" stroke-width="${f(w*0.02)}"/>`;
+  s+=`<path d="M${f(x-w*0.02)} ${f(y+h*0.15)} h${f(w*0.06)} M${f(x-w*0.02)} ${f(y+h*0.85)} h${f(w*0.06)}" stroke="#5A3A1C" stroke-width="${f(w*0.02)}"/>`;
+  s+=`<rect x="${f(x)}" y="${f(y)}" width="${f(w)}" height="${f(h)}" rx="${f(w*0.1)}" fill="url(#gScreen)"/>`;
+  if(glowUi!==false){
+    s+=`<g stroke="#9FD08A" stroke-width="${f(w*0.025)}" fill="none" opacity=".85"><path d="M${f(x+w*0.5)} ${f(y+h*0.42)} Q${f(x+w*0.25)} ${f(y+h*0.3)} ${f(x+w*0.12)} ${f(y+h*0.16)}"/><path d="M${f(x+w*0.5)} ${f(y+h*0.42)} Q${f(x+w*0.75)} ${f(y+h*0.32)} ${f(x+w*0.88)} ${f(y+h*0.2)}"/><path d="M${f(x+w*0.5)} ${f(y+h*0.42)} L${f(x+w*0.5)} ${f(y+h*0.62)}"/></g>`;
+    s+=`<circle cx="${f(x+w*0.5)}" cy="${f(y+h*0.42)}" r="${f(w*0.06)}" fill="#D7B16B"/>`;
+    s+=`<rect x="${f(x+w*0.1)}" y="${f(y+h*0.7)}" width="${f(w*0.8)}" height="${f(h*0.08)}" rx="${f(w*0.04)}" fill="#E8EFE0" opacity=".25"/><rect x="${f(x+w*0.1)}" y="${f(y+h*0.82)}" width="${f(w*0.5)}" height="${f(h*0.08)}" rx="${f(w*0.04)}" fill="#D7B16B" opacity=".8"/>`;
+  }
+  return s+"</g>";
+}
+function moveIcon(t){
+  const L="#C9E63B", st=`stroke="${L}" stroke-width=".7" fill="none" stroke-linecap="round" stroke-linejoin="round"`;
+  let s=`<g transform="translate(6 5)" opacity=".9">`;
+  if(t==="push") s+=`<rect x="0" y="0" width="18" height="10" ${st} stroke-dasharray="1.2 1"/><rect x="5" y="3" width="8" height="4" ${st}/><path d="M1.5 1 L4.5 2.6 M16.5 1 L13.5 2.6 M1.5 9 L4.5 7.4 M16.5 9 L13.5 7.4" ${st}/>`;
+  else if(t==="pull") s+=`<rect x="5" y="3" width="8" height="4" ${st} stroke-dasharray="1 .8"/><rect x="0" y="0" width="18" height="10" ${st}/><path d="M4.5 2.6 L1.5 1 M13.5 2.6 L16.5 1 M4.5 7.4 L1.5 9 M13.5 7.4 L16.5 9" ${st}/>`;
+  else if(t==="left") s+=`<path d="M18 5 H1 M5 1.5 L1 5 L5 8.5" ${st}/>`;
+  else if(t==="right") s+=`<path d="M0 5 H17 M13 1.5 L17 5 L13 8.5" ${st}/>`;
+  else if(t==="up") s+=`<path d="M9 10 V0.5 M5.5 4 L9 0.5 L12.5 4" ${st}/>`;
+  else if(t==="down") s+=`<path d="M9 0 V9.5 M5.5 6 L9 9.5 L12.5 6" ${st}/>`;
+  else if(t==="follow") s+=`<path d="M9 10 V2 M6 5 L9 2 L12 5 M3 10 H15" ${st}/>`;
+  else if(t==="track") s+=`<path d="M0 8 H18 M0 10 H18 M4 5 H15 M12 2.5 L15 5 L12 7.5" ${st}/>`;
+  else if(t==="crane") s+=`<path d="M2 10 L14 2 M9 1.5 L14 2 L13 6.5" ${st}/>`;
+  else s+=`<circle cx="5" cy="5" r="3.2" ${st}/><circle cx="5" cy="5" r=".9" fill="${L}"/>`;
+  return s+"</g>";
+}
+function frameSVG(fr){
+  return `<svg viewBox="0 0 240 100" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="لوحة الكادر ${fr.n}: ${fr.title}">${DRAW[fr.n]()}<rect width="240" height="100" fill="url(#vig)"/>${moveIcon(fr.mv)}</svg>`;
+}
+
+/* ---------- per-frame compositions ---------- */
+const DRAW = {
+  1:()=>bgKingdom(),
+  2:()=>bgHall()+throne(120,74,24)+person({k:"sultan",x:120,y:73,h:17})+person({k:"guard",x:96,y:80,h:18})+person({k:"guard",x:144,y:80,h:18}),
+  3:()=>`<rect width="240" height="100" fill="url(#gBokeh)"/><g filter="url(#blur3)" opacity=".7"><circle cx="205" cy="40" r="6" fill="#4A6A3A"/><circle cx="214" cy="46" r="6" fill="#4A6A3A"/><circle cx="200" cy="50" r="6" fill="#4A6A3A"/><ellipse cx="208" cy="62" rx="30" ry="5" fill="#A8703C"/></g><rect x="-5" y="60" width="250" height="22" rx="8" fill="#3A2615"/><path d="M0 66 H240" stroke="#A8703C" stroke-width=".8"/><path d="M0 76 H240" stroke="#A8703C" stroke-width=".4" opacity=".6"/><g fill="#6A4630" stroke="rgba(215,177,107,.4)" stroke-width=".4"><ellipse cx="118" cy="60" rx="30" ry="12"/><ellipse cx="88" cy="58" rx="12" ry="5"/><ellipse cx="96" cy="66" rx="11" ry="4.6"/><ellipse cx="104" cy="73" rx="10" ry="4.2"/><ellipse cx="114" cy="78" rx="9" ry="3.8"/><path d="M140 52 Q180 44 250 50 L250 72 Q180 70 142 68Z" fill="#E9DFC8"/></g><circle cx="99" cy="66" r="3.6" fill="none" stroke="#D7B16B" stroke-width="1.6"/><circle cx="99" cy="63.4" r="1.6" fill="#3E8E5E"/>`,
+  4:()=>bgClose()+throne(120,140,110)+person({k:"sultan",x:120,y:136,h:120}),
+  5:()=>bgCorridor()+person({k:"guard",x:36,y:96,h:50})+person({k:"guard",x:204,y:96,h:50})+person({k:"hajib",x:118,y:88,h:42,lean:-7})+scrollMini(127,62,6),
+  6:()=>bgHall()+`<rect y="84" width="240" height="4" fill="#3A2B19"/><rect y="88" width="240" height="4" fill="#2E2214"/>`+person({k:"hajib",x:150,y:94,h:52,lean:22})+`<rect x="-4" y="20" width="42" height="80" fill="#24180E" stroke="#A8703C" stroke-width=".6"/><path d="M38 60 L60 100 L38 100Z" fill="#E9DFC8" opacity=".85"/>`,
+  7:()=>bgClose()+person({k:"sultan",x:126,y:212,h:200}),
+  8:()=>bgClose()+person({k:"hajib",x:120,y:136,h:120})+`<g><rect x="92" y="66" width="56" height="30" fill="url(#gParch)"/><rect x="88" y="64" width="6" height="34" rx="3" fill="#B89A68"/><rect x="146" y="64" width="6" height="34" rx="3" fill="#B89A68"/><circle cx="120" cy="66" r="3" fill="#8C2A1E"/></g>`,
+  9:()=>`<rect width="240" height="100" fill="url(#gParch)"/><g opacity=".25" fill="#7A5A30" filter="url(#blur3)"><circle cx="40" cy="20" r="14"/><circle cx="200" cy="80" r="18"/></g><path d="M20 86 H60 V70 h4 v4 h4 v-4 h4 v4 h4 v-4 h4 V86 H220" stroke="#5A3A1C" stroke-width=".8" fill="none"/>`+woodHorse(96,88,96,{outline:true})+`<path d="M40 92 Q120 96 210 92" stroke="#5A3A1C" stroke-width=".4" fill="none" opacity=".6"/>`,
+  10:()=>bgHall()+`<rect width="240" height="100" fill="#000" opacity=".25"/><ellipse cx="96" cy="70" rx="30" ry="34" fill="url(#gLamp)" opacity=".25"/>`+person({k:"vizier",x:96,y:92,h:58})+person({k:"sultan",x:196,y:230,h:220,c:"#060504",rim:"rgba(215,177,107,.25)"}),
+  11:()=>bgClose()+person({k:"vizier",x:120,y:134,h:116})+`<rect x="128" y="104" width="16" height="6" rx="2" fill="#B89A68"/>`,
+  12:()=>bgClose()+person({k:"sultan",x:112,y:212,h:200}),
+  13:()=>bgTable(),
+  14:()=>bgTable()+`<rect width="240" height="100" fill="#0E1E17" opacity=".55"/><g filter="url(#glow)" stroke="#C9E63B" stroke-width="1" fill="none" opacity=".8"><path d="M120 50 Q95 40 62 24"/><path d="M120 50 Q140 30 180 22"/><path d="M120 50 Q150 58 186 74"/></g>`+phone(150,8,40,6),
+  15:()=>bgClose()+person({k:"sultan",x:80,y:128,h:110})+`<ellipse cx="98" cy="70" rx="16" ry="10" fill="#9FD08A" opacity=".18" filter="url(#blur3)"/>`+phone(93,70,9,-12,false)+person({k:"vizier",x:168,y:132,h:115})+`<path d="M146 78 L132 70" stroke="${SIL}" stroke-width="5" stroke-linecap="round"/>`,
+  16:()=>bgClose()+phone(96,4,48,-8)+`<g fill="#6A4630" stroke="rgba(215,177,107,.4)" stroke-width=".4"><path d="M240 100 L240 74 Q200 66 160 62 Q150 61 150 66 Q151 70 160 71 L190 78 L210 100Z"/></g><circle cx="176" cy="69" r="3" fill="none" stroke="#D7B16B" stroke-width="1.4"/>`,
+  17:()=>bgHall()+person({k:"guard",x:40,y:90,h:40})+person({k:"guard",x:200,y:90,h:40})+`<rect width="240" height="100" fill="#000" opacity=".2" filter="url(#blur1)"/>`+person({k:"hajib",x:118,y:136,h:120,lean:-9}),
+  18:()=>bgClose()+person({k:"sultan",x:120,y:205,h:190})+`<ellipse cx="120" cy="100" rx="40" ry="10" fill="#9FD08A" opacity=".25" filter="url(#blur3)"/>`,
+  19:()=>bgHall(true)+`<polygon points="100,0 140,0 170,100 70,100" fill="url(#gShaft)" opacity=".6"/>`+throne(120,100,48)+person({k:"sultan",x:120,y:102,h:78}),
+  20:()=>bgClose()+person({k:"hajib",x:80,y:132,h:115})+person({k:"vizier",x:164,y:134,h:118}),
+  21:()=>`<rect width="240" height="100" fill="#120D08"/><polygon points="114,6 126,6 200,100 40,100" fill="#FFF1CC" opacity=".55" filter="url(#blur1)"/><rect x="113" y="6" width="14" height="84" fill="#FFF8E6" filter="url(#glow)"/><polygon points="70,2 113,6 113,90 70,96" fill="#2E2014" stroke="#A8703C" stroke-width=".6"/><polygon points="170,2 127,6 127,90 170,96" fill="#2E2014" stroke="#A8703C" stroke-width=".6"/><rect y="94" width="240" height="6" fill="#1C140C"/>`+person({k:"guard",x:66,y:96,h:44,lean:8})+person({k:"guard",x:174,y:96,h:44,lean:-8})+person({k:"sultan",x:120,y:100,h:58}),
+  22:()=>aerial(),
+  23:()=>`<rect width="240" height="100" fill="url(#gFlood)"/><rect y="48" width="240" height="52" fill="#C9A372"/><path d="M60 100 L150 48 L170 48 L160 100Z" fill="#8C6A41" opacity=".6"/>${fleetRows(100,54,0.6)}<rect y="74" width="240" height="4" fill="#3A2614"/><g fill="#2E1F12">${Array.from({length:24},(_,i)=>`<rect x="${i*10+3}" y="78" width="4" height="22" rx="1.5"/>`).join("")}</g><rect y="96" width="240" height="4" fill="#3A2614"/>`+person({k:"sultan",x:58,y:212,h:200,c:"#1A120B",rim:"rgba(255,244,218,.7)"}),
+  24:()=>bgClose()+`<path d="M-10 70 L250 30" stroke="#1A1814" stroke-width="10" stroke-linecap="round"/><path d="M-10 70 L250 30" stroke="rgba(215,177,107,.5)" stroke-width=".6" transform="translate(0 -5)"/><g fill="#14120E" stroke="rgba(215,177,107,.55)" stroke-width=".6"><rect x="80" y="38" width="60" height="22" rx="10" transform="rotate(-9 110 49)"/><path d="M60 100 L84 56 L130 50 L150 100Z"/></g><ellipse cx="190" cy="30" rx="16" ry="10" fill="#FFF1CC" opacity=".5" filter="url(#blur3)"/>`,
+  25:()=>`<rect width="240" height="100" fill="url(#gDesert)"/><rect y="70" width="240" height="30" fill="url(#gSand)"/><g filter="url(#blur3)" fill="#E9D3A8" opacity=".75"><ellipse cx="200" cy="78" rx="40" ry="12"/><ellipse cx="40" cy="80" rx="30" ry="8"/></g><path d="M0 18 H240 V52 H0Z" fill="#14120E"/><circle cx="110" cy="66" r="34" fill="#050403"/><circle cx="110" cy="66" r="18" fill="#3A3832"/><g stroke="#6E6A60" stroke-width="1.6">${[0,45,90,135].map(a=>`<line x1="110" y1="66" x2="${f(110+17*Math.cos(a*Math.PI/180))}" y2="${f(66+17*Math.sin(a*Math.PI/180))}"/><line x1="110" y1="66" x2="${f(110-17*Math.cos(a*Math.PI/180))}" y2="${f(66-17*Math.sin(a*Math.PI/180))}"/>`).join("")}</g><g stroke="#FFF8E6" stroke-width=".6" opacity=".6">${[30,44,60,82,90].map((y,i)=>`<line x1="${150+i*6}" y1="${y}" x2="240" y2="${y}"/>`).join("")}</g>`,
+  26:()=>bgFlood()+person({k:"sultan",x:122,y:212,h:200,c:"#2A1E14",rim:"rgba(255,248,230,.85)"}),
+  27:()=>desertSide(),
+  28:()=>`<rect width="240" height="100" fill="url(#gDesert)"/><rect y="62" width="240" height="38" fill="url(#gSand)" filter="url(#blur1)"/>`+`<g opacity=".9">${woodHorse(150,110,120)}</g>`+person({k:"commander",x:104,y:134,h:116})+`<g filter="url(#blur3)" opacity=".8"><ellipse cx="96" cy="44" rx="34" ry="12" fill="#E9D3A8"/></g><g filter="url(#blur3)">${bike(-10,104,70)}</g>`,
+  29:()=>`<rect width="240" height="100" fill="url(#gDesert)"/><g opacity=".7">${skyline(56,"#9C7C56",0.45)}</g><rect y="56" width="240" height="44" fill="url(#gSand)"/><polygon points="150,56 154,56 230,100 120,100" fill="#5C4A36"/><g fill="#FFF1CC" filter="url(#glow)"><circle cx="151" cy="58" r=".6"/><circle cx="153" cy="58.4" r=".6"/><circle cx="152" cy="60" r=".7"/><circle cx="154.6" cy="60.4" r=".7"/><circle cx="156" cy="62.4" r=".8"/></g><g fill="#C9E63B"><circle cx="150.4" cy="59.4" r=".5"/></g>`+woodHorse(-6,104,104)+person({k:"soldier",x:110,y:98,h:20,lean:20})+person({k:"soldier",x:122,y:98,h:20,lean:20})+`<path d="M78 46 L108 84 M78 46 L120 84" stroke="#3A2614" stroke-width=".6"/>`,
+  30:()=>`<rect width="240" height="100" fill="url(#gForest)"/><g stroke="#D7B16B" stroke-width=".4" opacity=".25" fill="none"><path d="M120 40 L20 100 M120 40 L220 100 M120 40 L80 100 M120 40 L160 100"/></g><path d="M86 96 V44 Q86 22 120 12 Q154 22 154 44 V96" fill="none" stroke="#A8703C" stroke-width=".6" opacity=".7"/><rect x="92" y="34" width="56" height="22" rx="2" fill="none" stroke="#EFE6D3" stroke-width=".5" stroke-dasharray="2 1.5" opacity=".7"/><rect x="94" y="64" width="24" height="8" rx="2" fill="none" stroke="#EFE6D3" stroke-width=".4" stroke-dasharray="1.5 1" opacity=".6"/><rect x="122" y="64" width="24" height="8" rx="2" fill="none" stroke="#EFE6D3" stroke-width=".4" stroke-dasharray="1.5 1" opacity=".6"/>`
+};
+function scrollMini(x,y,w){ return `<rect x="${x}" y="${y}" width="${w}" height="${w*0.4}" rx="${w*0.2}" fill="#D8C39A"/>`; }
+function fleetRows(cx,y0,s){
+  let out="";
+  for(let r=0;r<4;r++){ const yy=y0+r*5*s+2, scale=s*(0.7+r*0.12), n=9;
+    for(let i=0;i<n;i++){ const x=cx-n*9*scale/2+i*9*scale; out += (i%3===2)? bike(x,yy,6*scale,{}) : car(x,yy,8*scale,{}); } }
+  return out;
+}
+function aerial(){
+  let s=`<rect width="240" height="100" fill="#B48E5E"/><rect x="0" y="0" width="240" height="22" fill="#9C774C"/><path d="M0 18 L240 10 L240 26 L0 34Z" fill="#5C4A36"/>`;
+  for(let r=0;r<5;r++) for(let c=0;c<14;c++){
+    const x=36+c*12.2, y=40+r*9.4, bk=(c%4===3);
+    if(bk){ s+=`<rect x="${f(x+1.6)}" y="${f(y+0.6)}" width="2.2" height="5" rx=".8" fill="#000" opacity=".25"/><rect x="${f(x+1)}" y="${f(y)}" width="2.2" height="5" rx=".8" fill="#15130F"/><circle cx="${f(x+2.1)}" cy="${f(y+0.3)}" r=".7" fill="#FFF1CC" filter="url(#glow)"/>`; }
+    else { s+=`<rect x="${f(x+1.6)}" y="${f(y+0.8)}" width="5" height="7.4" rx="1.4" fill="#000" opacity=".25"/><rect x="${f(x)}" y="${f(y)}" width="5" height="7.4" rx="1.4" fill="#15130F" stroke="rgba(215,177,107,.35)" stroke-width=".25"/><rect x="${f(x+0.8)}" y="${f(y+1.6)}" width="3.4" height="2" rx=".4" fill="#3B4A44"/><circle cx="${f(x+1)}" cy="${f(y+0.4)}" r=".6" fill="#FFF1CC" filter="url(#glow)"/><circle cx="${f(x+4)}" cy="${f(y+0.4)}" r=".6" fill="#FFF1CC" filter="url(#glow)"/>`; }
+  }
+  s+=`<rect y="88" width="240" height="12" fill="#5A3F24"/>`+Array.from({length:24},(_,i)=>`<rect x="${i*10}" y="84" width="6" height="5" fill="#5A3F24"/>`).join("");
+  s+=`<rect width="240" height="100" fill="#FFF8E6" opacity=".12"/>`;
+  return s;
+}
+function desertSide(){
+  let s=`<rect width="240" height="100" fill="url(#gDesert)"/><ellipse cx="190" cy="30" rx="30" ry="12" fill="#FFF4DA" opacity=".55" filter="url(#blur3)"/><rect y="62" width="240" height="38" fill="url(#gSand)"/><rect y="78" width="240" height="11" fill="#4A3B2C"/><path d="M0 83.5 H240" stroke="#D7C39A" stroke-width=".4" stroke-dasharray="4 4"/>`;
+  s+=woodHorse(22,76,58);
+  for(let i=0;i<4;i++){ s+=person({k:"soldier",x:92+i*9,y:76,h:13,lean:22}); }
+  s+=`<path d="M70 50 L128 66" stroke="#3A2614" stroke-width=".5"/>`;
+  s+=`<g filter="url(#blur3)" fill="#E9D3A8" opacity=".85"><ellipse cx="210" cy="84" rx="40" ry="6"/></g>`;
+  s+=car(150,88,24)+bike(178,88,13)+car(196,88,24)+bike(224,88,13);
+  s+=`<g stroke="#FFF8E6" stroke-width=".4" opacity=".7">${[80,82,85,87].map((y,i)=>`<line x1="${174+i*8}" y1="${y}" x2="240" y2="${y}"/>`).join("")}</g>`;
+  return s;
+}
+
+/* ================= STORYBOARD DATA ================= */
+const SCENES=[["المملكة","0:00–0:08"],["الخبر","0:08–0:20"],["المجلس","0:20–0:42"],["السؤال","0:42–0:52"],["الكشف","0:52–1:06"],["السبق","1:06–1:16"],["الختام","1:16–1:22"]];
+const STY="Cinematic film still, anamorphic 2.39:1, soft epic natural lighting, warm sandstone, deep green and copper palette, subtle film grain, no text, no letters, no logos. ";
+const C={SUL:"the Sultan (dignified Iraqi man in his mid-50s, neatly trimmed beard, layered ivory and deep-green robes with copper embroidery, tall wrapped turban with a single green stone, one prominent ring)",HAJ:"the chamberlain (lean anxious man in his 40s, sand-colored robe, small turban, brass-tipped staff)",VIZ:"the vizier (composed man in his 60s, charcoal-green robe, tall dark cap, folded map at his belt)",HALL:"a vast imagined throne hall with sandstone columns, pointed arches, high windows casting light shafts and muted carpets",FLEET:"a uniform fleet of modern cars and motorcycles in brand livery with drivers and riders in matching uniforms",DESERT:"a long straight desert road under hazy sun with dust in the air"};
+const pr=s=>STY+s.replace(/SUL|HAJ|VIZ|HALL|FLEET|DESERT/g,m=>C[m]);
+
+const FR=[
+ {n:1,s:0,t:"0:00–0:03",title:"فجر فوق المملكة",b:"EWS",mv:"push",shot:"لقطة تأسيسية عامة جداً",cam:"ثابتة على حامل مع دفع بطيء جداً، أو درون بطيء",lens:"واسعة نحو 24–28مم، ضباب خفيف في العمق",light:"شمس فجر منخفضة خلف الأفق، سماء خضراء رمادية تتدرج إلى ذهبي",sound:"رياح خفيفة، طيور فجر، نغمة ممتدة وجملة عود منفردة",desc:"خط أفق المملكة المتخيلة: قباب وأسوار ومآذن، ضباب يلامس أسفل الأسوار، أعلام خضراء داكنة تتحرك ببطء. لا شخصيات.",cont:"خط الأفق نفسه يعود في كادر 29. قطع ناعم إلى القاعة مع استمرار الرياح كصدى.",p:"Establishing extreme wide shot of an imagined ancient kingdom skyline at dawn, sandstone domes, walls and minarets, low mist, dark green banners, golden light on the horizon."},
+ {n:2,s:0,t:"0:03–0:05",title:"قاعة العرش",b:"WS",mv:"push",shot:"لقطة عامة متناظرة",cam:"دوللي بطيء للأمام على المحور المركزي",lens:"واسعة نحو 24مم لإظهار العمق",light:"أعمدة ضوء من النوافذ العالية على الأرضية، العرش في بقعة ضوء",sound:"صدى القاعة، الرياح تخفت",desc:"قاعة عرش واسعة متناظرة، صفّا أعمدة يقودان العين إلى العرش في العمق. السلطان صغير في الكادر، جالس بثبات، وحارسان على جانبي العرش.",cont:"يد السلطان اليمنى على المسند والخاتم ظاهر. القطع إلى نفس اليد.",p:"Symmetrical wide shot of HALL, SUL seated small on a high-backed dark wood throne with copper inlay at the far end, two guards flanking, light shafts on the floor."},
+ {n:3,s:0,t:"0:05–0:07",title:"الخاتم والمسند",b:"INSERT",mv:"static",shot:"لقطة إدخال قريبة جداً",cam:"ثابتة، عمق ميدان ضحل",lens:"ماكرو أو 85–100مم",light:"ضوء جانبي دافئ يلمع بنعومة على النحاس والخاتم",sound:"نقر أصابع منتظم على الخشب",desc:"أصابع السلطان تنقر مسند العرش الخشبي بإيقاع هادئ. خاتم بحجر أخضر. صينية عنب نحاسية خارج التركيز.",cont:"إيقاع النقر يدخل في الموسيقى ثم يتوقف عند سماع الخطوات.",p:"Extreme close-up insert of a man's hand on a carved dark-wood armrest with copper inlay, fingers tapping, ring with a green stone, copper tray of grapes out of focus."},
+ {n:4,s:0,t:"0:07–0:08",title:"سكون السلطان",b:"MS",mv:"push",shot:"لقطة متوسطة",cam:"دفع بطيء جداً",lens:"نحو 50مم",light:"ضوء نافذة جانبي ناعم، خلفية داكنة بتوهجات خفيفة",sound:"خطوات راكضة تبدأ من بعيد وتقترب",desc:"السلطان على عرشه، عيناه نصف مغمضتين، ملامحه مسترخية تماماً. يسمع الخطوات ولا يتحرك.",cont:"لا ردة فعل منه؛ الصوت يقودنا إلى الممر.",p:"Medium shot of SUL on the throne, eyes half closed, perfectly calm, soft side window light, dark background with warm bokeh."},
+ {n:5,s:1,t:"0:08–0:10",title:"ركضة الحاجب",b:"WS",mv:"pull",shot:"لقطة عامة للممر",cam:"جيمبل يتراجع أمام الحاجب",lens:"28–35مم",light:"ممر بظلال عميقة تقطعها بقع ضوء من النوافذ",sound:"خطوات سريعة، احتكاك الستائر، لهاث",desc:"الحاجب يركض باتجاه الكاميرا في ممر طويل من الأقواس، يرفع ثوبه بيد ويمسك الرسالة بالأخرى. الستائر تتطاير والحرس يلتفتون برؤوسهم فقط.",cont:"الرسالة في يده اليمنى. يخرج من الكادر ليدخل القاعة في الكادر التالي.",p:"Wide shot of a long arched palace corridor with heavy green curtains, HAJ running toward camera holding his robe and a sealed scroll, guards turning their heads, pools of window light."},
+ {n:6,s:1,t:"0:10–0:12",title:"مولاي! مولاي!",b:"MWS",mv:"static",shot:"لقطة متوسطة عامة",cam:"ثابتة، اهتزاز خفيف عند توقفه",lens:"35مم",light:"بقعة ضوء أمام العرش",sound:"«مولاي! مولاي!» ولهاث",desc:"الحاجب يتوقف أمام درجات العرش وينحني بسرعة لاهثاً. طرف العرش وطرف ثوب السلطان في مقدمة الكادر.",cont:"تنتهي الانحناءة برفع رأسه نحو السلطان، مطابقة لنظرة الكادر التالي.",p:"Medium wide shot, HAJ skidding to a stop and bowing breathlessly at the foot of the throne steps, edge of the throne and the Sultan's ivory robe in the foreground."},
+ {n:7,s:1,t:"0:12–0:14",title:"منو لاحگك؟",b:"CU",mv:"static",shot:"لقطة قريبة",cam:"ثابتة",lens:"85مم",light:"ضوء جانبي ناعم، نصف الوجه في الظل",sound:"«خير إن شاء الله... منو لاحگك؟»",desc:"السلطان يرفع حاجباً واحداً فقط ولا يغيّر جلسته.",cont:"نظرته باتجاه الحاجب على المحور نفسه.",p:"Close-up of SUL raising one eyebrow, unbothered, soft side light, shallow depth of field."},
+ {n:8,s:1,t:"0:14–0:17",title:"الخبر",b:"MS",mv:"push",shot:"لقطة متوسطة",cam:"دفع خفيف",lens:"50مم",light:"ضوء نافذة أمامي على الرسالة",sound:"«مملكة [اسم المملكة المجاورة] ناوية تغزونا يا مولاي!» ثم «...وشلون عرفت؟» وصوت كسر الختم",desc:"الحاجب يكسر ختم الرسالة الشمعي ويفردها أمامه بيدين مرتجفتين.",cont:"الرسالة مفرودة باتجاه الكاميرا، تتصل بالتفصيل التالي.",p:"Medium shot of HAJ breaking a red wax seal and unrolling a parchment scroll with trembling hands, window light on the paper."},
+ {n:9,s:1,t:"0:17–0:20",title:"رسم الحصان",b:"INSERT",mv:"up",shot:"لقطة إدخال",cam:"تيلت بطيء للأعلى على الرسم",lens:"ماكرو أو 65مم",light:"ضوء دافئ يعبر الرق",sound:"«عيوننا شافوهم... يبنون حصان خشب، بطول السور!» ونبض طبل خافت",desc:"رسم بالحبر البني لحصان خشبي عملاق على قاعدة بعجلات، وبجانبه سور صغير يوضح حجمه. بلا كتابة.",cont:"تصميم الحصان المرسوم يطابق المجسم في كادر 27.",p:"Insert of aged parchment with a brown ink sketch of a giant wooden horse on a wheeled platform towering over a small city wall, no writing, warm light through the paper."},
+ {n:10,s:2,t:"0:20–0:22",title:"الوزير يتقدم",b:"OTS",mv:"static",shot:"لقطة فوق الكتف",cam:"ثابتة مع تحويل تركيز من كتف السلطان إلى الوزير",lens:"50–65مم",light:"الوزير يخرج من الظل إلى بقعة ضوء",sound:"«حيلة قديمة يا مولاي.»",desc:"من خلف كتف السلطان وعمامته، الوزير يتقدم من بين الأعمدة ويخرج من الظل إلى الضوء.",cont:"الوزير على يمين السلطان دائماً في مشاهد المجلس (قاعدة 180 درجة).",p:"Over-the-shoulder shot from behind SUL, turban and shoulder in dark foreground, VIZ stepping out from between columns into a pool of light."},
+ {n:11,s:2,t:"0:22–0:24",title:"وإحنا غافلين",b:"MS",mv:"static",shot:"لقطة متوسطة",cam:"ثابتة",lens:"65مم",light:"ضوء جانبي ناعم ينحت الوجه",sound:"«يدخلون بيه علينا... وإحنا غافلين.»",desc:"الوزير بنظرة جادة، يده على الخريطة المطوية في حزامه.",cont:"يده على الخريطة تمهد لكادر 13.",p:"Medium shot of VIZ, serious and composed, hand resting on the folded map at his belt, sculpted soft side light."},
+ {n:12,s:2,t:"0:24–0:26",title:"وإحنا شوكت غفلنا؟",b:"CU",mv:"static",shot:"لقطة قريبة",cam:"ثابتة",lens:"85مم",light:"نفس إعداد كادر 7",sound:"«وإحنا شوكت غفلنا؟ ... گول يا وزير، شعدنا؟»",desc:"ابتسامة خفيفة تظهر على وجه السلطان لأول مرة، ويميل للأمام قليلاً.",cont:"الإضاءة مطابقة لكادر 7.",p:"Close-up of SUL with a faint confident smile, leaning slightly forward, soft side light."},
+ {n:13,s:2,t:"0:26–0:29",title:"خريطة المملكة",b:"TOP",mv:"down",shot:"لقطة علوية مباشرة",cam:"ثابتة فوق الطاولة أو نزول رأسي بطيء",lens:"35مم",light:"ضوء قنديل دافئ مع ضوء نافذة",sound:"حفيف الرق، «المملكة كلها بإيدك يا مولاي...»",desc:"يدا الوزير تفردان خريطة مرسومة يدوياً على طاولة خشبية. طرق المملكة بخطوط ذهبية تتفرع من القصر إلى كل الاتجاهات.",cont:"شكل الطرق يطابق خريطة التطبيق في الكادر التالي.",p:"Top-down shot of the vizier's hands with green sleeves unrolling a hand-drawn parchment map on a dark wooden table, routes in gold lines branching from a central palace, no lettering."},
+ {n:14,s:2,t:"0:29–0:32",title:"الخريطة تستيقظ",b:"MATCH",mv:"push",shot:"قطع مطابق",cam:"دفع رقمي ناعم من الخريطة إلى الشاشة",lens:"—",light:"الخطوط الذهبية تتوهج وتتحول إلى ضوء الشاشة",sound:"انتقال صوتي ناعم، «[الخدمة الأولى] توصل لكل زاوية بيها.»",desc:"الخطوط الذهبية على الخريطة تتوهج وتتحول إلى خريطة التطبيق على شاشة الهاتف في يد السلطان.",cont:"مؤثر بصري بسيط؛ الواجهة الحقيقية [واجهة التطبيق] تُركّب في ما بعد الإنتاج.",p:"Match-cut transition frame: gold route lines on a parchment map glowing and morphing into a glowing map interface on a smartphone inside an engraved brass sleeve."},
+ {n:15,s:2,t:"0:32–0:35",title:"وهاي؟",b:"2S",mv:"right",shot:"لقطة ثنائية متوسطة",cam:"دوللي جانبي بطيء",lens:"40–50مم",light:"وهج الشاشة يضيء وجه السلطان بخفة",sound:"«وهاي؟» ثم «[ميزة التطبيق]... من هنا، وبنفس اللحظة.»",desc:"السلطان يقلّب الهاتف في غلافه النحاسي بفضول هادئ، والوزير بجانبه يشرح بإشارة يد.",cont:"الهاتف في يد السلطان اليمنى، والوزير على يمينه.",p:"Medium two-shot, SUL holding a smartphone in an engraved brass and leather sleeve like a royal seal, VIZ beside him gesturing, soft screen glow on the Sultan's face."},
+ {n:16,s:2,t:"0:35–0:37",title:"الشاشة",b:"INSERT",mv:"static",shot:"لقطة إدخال",cam:"ثابتة",lens:"ماكرو",light:"سطوع الشاشة متوازن مع الضوء المحيط",sound:"نقرة خفيفة [صوت التطبيق إن وجد]",desc:"إصبع السلطان بالخاتم ينقر شاشة التطبيق، والشاشة تعرض [ميزة التطبيق].",cont:"الشاشة تُصوّر بمحتوى مؤقت ويُركّب المحتوى الحقيقي لاحقاً.",p:"Insert close-up of a ringed finger tapping a smartphone screen inside an ornate brass sleeve, screen shows a clean placeholder app interface with abstract blocks, no readable text."},
+ {n:17,s:2,t:"0:37–0:40",title:"دهشة الحاجب",b:"MS",mv:"static",shot:"لقطة متوسطة",cam:"ثابتة",lens:"50مم",light:"إعداد القاعة نفسه",sound:"«و[الخدمة الثانية] هم؟ يعني حتى الحاجب ما يحتاج يركض بعد!»",desc:"الحاجب يمد رقبته نحو الشاشة مندهشاً، ثم ينتبه لنظرة السلطان ويعدّل وقفته فوراً.",cont:"قابل للحذف في نسخة 60 ثانية.",p:"Medium shot of HAJ craning his neck to peek at a phone screen, amazed, guards in soft focus behind him."},
+ {n:18,s:2,t:"0:40–0:42",title:"القرار",b:"CU",mv:"down",shot:"لقطة قريبة",cam:"تيلت خفيف للأسفل مع الهاتف",lens:"85مم",light:"وهج الشاشة يخفت عن الوجه",sound:"نبض الموسيقى يتوقف",desc:"السلطان يُنزل الهاتف ببطء، ونظرته تتحول من الفضول إلى القرار.",cont:"يضع الهاتف على مسند العرش قبل أن ينهض.",p:"Close-up of SUL lowering the phone, expression shifting to quiet decision, screen glow fading from his face."},
+ {n:19,s:3,t:"0:42–0:45",title:"والجيش؟",b:"LOW",mv:"up",shot:"لقطة عامة بزاوية منخفضة",cam:"تيلت للأعلى مع نهوضه",lens:"24–28مم",light:"أعمدة الضوء خلفه تصنع هالة خفيفة",sound:"«زين... والجيش؟» ثم صمت قصير",desc:"السلطان ينهض من عرشه، ويبدو أطول وأكثر هيبة بفعل الزاوية المنخفضة.",cont:"بعد الصمت تبدأ الموسيقى بالصعود.",p:"Low-angle wide shot of SUL rising from the throne, towering columns, light shafts behind him forming a subtle halo."},
+ {n:20,s:3,t:"0:45–0:48",title:"جاهز يا مولاي",b:"2S",mv:"static",shot:"لقطة ثنائية متوسطة",cam:"ثابتة",lens:"40مم",light:"دافئ متوازن",sound:"«الجيش... جاهز يا مولاي.»",desc:"الحاجب والوزير يتبادلان نظرة، ثم ابتسامة صغيرة واثقة.",cont:"الحاجب يسار الكادر والوزير يمينه.",p:"Medium two-shot of HAJ and VIZ exchanging a knowing look and a small confident smile."},
+ {n:21,s:3,t:"0:48–0:52",title:"أبواب الشرفة",b:"WS",mv:"follow",shot:"لقطة عامة من الخلف",cam:"متابعة من الخلف بجيمبل",lens:"28مم",light:"ضوء أبيض يتسرب من شق الأبواب ثم يغمر القاعة",sound:"صرير الأبواب الثقيلة، اندفاع هواء، الموسيقى تصعد",desc:"السلطان يمشي نحو أبواب خشبية ضخمة، وحارسان يدفعانها بحركة متزامنة، والضوء يغمر الكادر.",cont:"ينتهي الكادر بوهج أبيض يستمر في بداية اللقطة الجوية.",p:"Wide shot from behind SUL walking toward towering double wooden balcony doors, two guards pushing them open in sync, warm daylight flooding in."},
+ {n:22,s:4,t:"0:52–0:56",title:"الجيش",b:"AERIAL",mv:"crane",shot:"لقطة جوية عامة جداً",cam:"درون يتقدم فوق السور ويكشف الساحة",lens:"واسعة",light:"شمس صباحية ناعمة، ظلال طويلة",sound:"ذروة الثيمة بالنحاس والطبول",desc:"من فوق سور القصر يتكشف الأسطول مصفوفاً كتشكيل عسكري أمام البوابة: صفوف سيارات ودراجات بأضواء أمامية مشتعلة، والسائقون واقفون بجانب مركباتهم.",cont:"التعريض ينزل من الأبيض إلى التفاصيل. يمكن تكثير الصفوف رقمياً.",p:"Aerial drone shot rising over a sandstone palace wall revealing FLEET lined up in perfect military formation in a courtyard before the gate, headlights on, long soft morning shadows."},
+ {n:23,s:4,t:"0:56–0:58",title:"السلطان والأسطول",b:"OTS",mv:"static",shot:"لقطة فوق الكتف",cam:"ثابتة",lens:"35مم",light:"السلطان شبه ظلّي أمام ضوء النهار",sound:"رياح، بداية تشغيل المحركات",desc:"من خلف السلطان على الشرفة، ننظر معه إلى الأسطول في الأسفل.",cont:"السلطان في طرف الكادر والأسطول في العمق.",p:"Over-the-shoulder shot from behind SUL on a grand balcony with a carved balustrade, looking down at FLEET in formation in the courtyard below."},
+ {n:24,s:4,t:"0:58–1:00",title:"التشغيل",b:"INSERT",mv:"static",shot:"لقطة إدخال، حركة بطيئة",cam:"ثابتة، 48–60 إطاراً",lens:"85مم",light:"حافة ضوء على القفاز والمقود",sound:"إغلاق خوذة، تشغيل محرك كضربة طبل",desc:"يد بقفاز تدير مقبض الدراجة، خوذة تُغلق، وباب سيارة يُغلق على نفس الإيقاع.",cont:"قابل للحذف في نسخة 60 ثانية.",p:"Insert in slow motion, a gloved hand twisting a motorcycle throttle, rim light on the glove and handlebar, uniform sleeve."},
+ {n:25,s:4,t:"1:00–1:03",title:"الانطلاق",b:"LOW",mv:"static",shot:"لقطة منخفضة قريبة",cam:"ثابتة على الأرض، والمركبات تمر",lens:"24مم",light:"شمس خلفية تُبرز الغبار",sound:"مرور المركبات، دوي المحركات، الإيقاع يتسارع",desc:"عجلات السيارات والدراجات تمر قريبة جداً من العدسة، والغبار يرتفع.",cont:"اتجاه الحركة ثابت حتى نهاية الإعلان.",p:"Ground-level low shot of car and motorcycle wheels rolling past the lens, dust kicked up, backlit sun."},
+ {n:26,s:4,t:"1:03–1:06",title:"إذا لحگوا",b:"CU",mv:"push",shot:"لقطة قريبة",cam:"دفع بطيء",lens:"85مم",light:"ضوء نهار أمامي من الشرفة، أكثر إشراقاً من الداخل",sound:"«خلّوهم يجون... إذا لحگوا.»",desc:"السلطان بعينين نصف مغمضتين من جديد وابتسامة واثقة. الضوء يلمع على العمامة والحجر الأخضر.",cont:"الابتسامة تقودنا مباشرة إلى الصحراء.",p:"Close-up of SUL on the balcony bathed in warm daylight, eyes half closed again, calm victorious smile."},
+ {n:27,s:5,t:"1:06–1:10",title:"الحصان البطيء",b:"EWS",mv:"track",shot:"لقطة عامة جداً جانبية",cam:"تتبع جانبي بسيارة كاميرا أو درون",lens:"50–85مم لضغط المسافة",light:"شمس عالية مع غبار",sound:"صرير الخشب، حبال، ثم مرور المركبات",desc:"على طريق صحراوي، جنود المملكة المعادية يجرّون الحصان الخشبي العملاق بالحبال ببطء شديد، والأسطول يمر بجانبهم بسرعة.",cont:"الحصان مجسم جزئي مع إكمال رقمي.",p:"Extreme wide side shot on DESERT, enemy soldiers in earthy brown and faded red hauling a giant wooden horse on a wheeled platform with ropes, while FLEET streaks past in the adjacent lane."},
+ {n:28,s:5,t:"1:10–1:13",title:"التفاتة القائد",b:"MS",mv:"static",shot:"لقطة متوسطة",cam:"ثابتة",lens:"65مم",light:"غبار يلطّف الشمس",sound:"لمسة موسيقية كوميدية خفيفة، دراجة تمر قريباً",desc:"قائد المملكة المعادية يلتفت ببطء، والغبار يغطي وجهه بعد مرور الدراجات.",cont:"دراجة ضبابية تعبر مقدمة الكادر.",p:"Medium shot of a stern enemy commander with a plumed helmet beside the wooden horse, slowly turning his head as dust from passing motorcycles hits his face, motion-blurred bike in the foreground."},
+ {n:29,s:5,t:"1:13–1:16",title:"السبق",b:"WS",mv:"static",shot:"لقطة عامة بعمق",cam:"ثابتة أو رفع بطيء",lens:"35مم",light:"أفق ذهبي",sound:"الثيمة تتجه للختام",desc:"الحصان الخشبي ضخم وبطيء في مقدمة الكادر، والأسطول صار نقاطاً من الضوء تصل إلى أفق المملكة في العمق.",cont:"خط الأفق نفسه من كادر 1.",p:"Wide deep-focus shot, the giant wooden horse looming slowly in the foreground, FLEET far ahead as tiny lights reaching the kingdom skyline on the horizon."},
+ {n:30,s:6,t:"1:16–1:22",title:"شاشة الختام",b:"CARD",mv:"static",shot:"تصميم جرافيك",cam:"حركة خفيفة للعناصر",lens:"—",light:"ألوان هوية العلامة",sound:"ختام الثيمة، توقيع صوتي إن وجد، تعليق صوتي اختياري",desc:"شعار «طريق السلطان» فوق ملمس طريق ناعم، الشعار الإعلاني المعتمد، وعناصر تحميل التطبيق [عناصر التحميل].",cont:"يُصمم من ملفات العميل الرسمية.",p:"End card background: subtle dark green texture with faint road lines and thin copper arch, empty space reserved for a logo and download badges, no text."}
+];
+
+/* ================= STORYBOARD RENDER ================= */
+const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const mark=s=>esc(s).replace(/\[([^\]]+)\]/g,'<span class="ph">[$1]</span>');
+function fieldsHTML(fr){
+  return `<dl class="fields"><dt>الوصف</dt><dd>${mark(fr.desc)}</dd><dt>حجم اللقطة</dt><dd>${fr.shot}</dd><dt>الكاميرا</dt><dd>${fr.cam}</dd><dt>العدسة/الإحساس</dt><dd>${fr.lens} <span class="mute small">(مقترح)</span></dd><dt>الإضاءة والجو</dt><dd>${fr.light}</dd><dt>الصوت والحوار</dt><dd>${mark(fr.sound)}</dd><dt>الاستمرارية</dt><dd>${mark(fr.cont)}</dd></dl>`;
+}
+function promptHTML(fr){
+  return `<details class="prompt"><summary>وصف توليد الصورة النهائية</summary><p>${esc(pr(fr.p))}</p><button class="copy" data-copy="${fr.n}">نسخ الوصف</button></details>`;
+}
+function metaHTML(fr){ return `<div class="fd-meta">كادر ${fr.n} · مشهد ${fr.s+1}: ${SCENES[fr.s][0]} · <span>${fr.t}</span></div>`; }
+const grid=document.getElementById("sbGrid"), list=document.getElementById("sbList");
+let g="", l="";
+SCENES.forEach((sc,si)=>{
+  const items=FR.filter(x=>x.s===si);
+  g+=`<div class="sb-scene"><div class="sb-scene-h"><h3>${si+1}. ${sc[0]}</h3><span>${sc[1]}</span></div><div class="sb-grid">`;
+  items.forEach(fr=>{
+    g+=`<button class="fr" data-f="${fr.n}" aria-label="كادر ${fr.n}: ${fr.title}"><div class="pic">${frameSVG(fr)}<span class="no">${fr.n}</span><span class="shot">${fr.b}</span></div><div class="cap"><span>${fr.title}</span><em>${fr.t}</em></div></button>`;
+    l+=`<article class="fd"><div><div class="dlg-pic">${frameSVG(fr)}</div>${promptHTML(fr)}</div><div><h4 class="fd-title">${fr.n}. ${fr.title}</h4>${metaHTML(fr)}${fieldsHTML(fr)}</div></article>`;
+  });
+  g+=`</div></div>`;
+});
+grid.innerHTML=g; list.innerHTML=l;
+const vG=document.getElementById("vGrid"), vL=document.getElementById("vList");
+function view(isList){ list.hidden=!isList; grid.hidden=isList; vG.setAttribute("aria-pressed",String(!isList)); vL.setAttribute("aria-pressed",String(isList)); }
+vG.onclick=()=>view(false); vL.onclick=()=>view(true);
+
+const dlg=document.getElementById("fdlg"), dBody=document.getElementById("dBody");
+let curF=1;
+function openF(n){
+  curF=n; const fr=FR[n-1];
+  dBody.innerHTML=`<div><div class="dlg-pic">${frameSVG(fr)}</div>${promptHTML(fr)}</div><div><h4 class="fd-title">${fr.n}. ${fr.title}</h4>${metaHTML(fr)}${fieldsHTML(fr)}</div>`;
+  document.getElementById("dPrev").disabled=n===1; document.getElementById("dNext").disabled=n===FR.length;
+  if(!dlg.open){ if(dlg.showModal) dlg.showModal(); else dlg.setAttribute("open",""); }
+  dlg.scrollTop=0;
+}
+grid.addEventListener("click",e=>{ const b=e.target.closest(".fr"); if(b) openF(+b.dataset.f); });
+document.getElementById("dPrev").onclick=()=>curF>1&&openF(curF-1);
+document.getElementById("dNext").onclick=()=>curF<FR.length&&openF(curF+1);
+document.getElementById("dClose").onclick=()=>dlg.close?dlg.close():dlg.removeAttribute("open");
+dlg.addEventListener("click",e=>{ if(e.target===dlg) dlg.close(); });
+document.addEventListener("click",e=>{
+  const c=e.target.closest(".copy"); if(!c) return;
+  const txt=pr(FR[+c.dataset.copy-1].p);
+  const done=()=>{ c.textContent="تم النسخ"; setTimeout(()=>c.textContent="نسخ الوصف",1600); };
+  try{ navigator.clipboard.writeText(txt).then(done,()=>{}); }catch(err){}
+});
+
+/* ================= CHAPTER NAVIGATION ================= */
+const chs=[...document.querySelectorAll(".chapter")];
+const toc=document.getElementById("toc"), drawer=document.getElementById("drawer");
+const prog=document.getElementById("prog"), barTitle=document.getElementById("barTitle");
+const prev=document.getElementById("prev"), next=document.getElementById("next");
+document.getElementById("tot").textContent=chs.length;
+toc.innerHTML=chs.map((c,i)=>`<li><button data-go="${i}"><span class="n">${String(i).padStart(2,"0")}</span>${c.dataset.title}</button></li>`).join("");
+let cur=0;
+function go(i,push){
+  i=Math.max(0,Math.min(chs.length-1,i)); cur=i;
+  chs.forEach((c,k)=>c.classList.toggle("on",k===i));
+  prog.style.width=((i)/(chs.length-1)*100)+"%";
+  barTitle.innerHTML=`<strong>حصان طروادة</strong> · ${chs[i].dataset.title}`;
+  document.getElementById("cur").textContent=i+1;
+  prev.disabled=i===0; next.disabled=i===chs.length-1;
+  document.getElementById("prevLbl").textContent=i>0?chs[i-1].dataset.title:"السابق";
+  document.getElementById("nextLbl").textContent=i<chs.length-1?chs[i+1].dataset.title:"النهاية";
+  toc.querySelectorAll("button").forEach((b,k)=>b.setAttribute("aria-current",String(k===i)));
+  window.scrollTo(0,0);
+  if(push!==false){ try{ history.replaceState(null,"","#c"+i); }catch(err){} }
+}
+prev.onclick=()=>go(cur-1); next.onclick=()=>go(cur+1);
+document.addEventListener("click",e=>{ const b=e.target.closest("[data-go]"); if(b){ go(+b.dataset.go); closeIdx(); } });
+function openIdx(){ drawer.classList.add("open"); drawer.querySelector(".x-btn").focus(); }
+function closeIdx(){ drawer.classList.remove("open"); }
+document.getElementById("openIdx").onclick=openIdx;
+document.getElementById("closeIdx").onclick=closeIdx;
+drawer.addEventListener("click",e=>{ if(e.target===drawer) closeIdx(); });
+document.addEventListener("keydown",e=>{
+  if(e.target.closest("input,textarea")) return;
+  if(dlg.open){
+    if(e.key==="ArrowLeft"&&curF<FR.length){ e.preventDefault(); openF(curF+1); }
+    if(e.key==="ArrowRight"&&curF>1){ e.preventDefault(); openF(curF-1); }
+    return;
+  }
+  if(e.key==="Escape") closeIdx();
+  if(drawer.classList.contains("open")) return;
+  if(e.key==="ArrowLeft"||e.key==="PageDown"){ e.preventDefault(); go(cur+1); }
+  if(e.key==="ArrowRight"||e.key==="PageUp"){ e.preventDefault(); go(cur-1); }
+});
+const h=parseInt((location.hash||"").replace("#c",""),10);
+go(isNaN(h)?0:h,false);
+})();
+</script>
+</body>
+</html>
